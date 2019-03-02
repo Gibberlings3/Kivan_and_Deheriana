@@ -1,0 +1,21 @@
+/* Kivan was in party upon transition: he is no longer available for summoning */
+
+IF
+	InPartyAllowDead("P#Kivan")
+	Global("P#KivanSummoned","GLOBAL",0)
+THEN
+	RESPONSE #100
+		ActionOverride("P#Kivan",ChangeAIScript("P#KI25",OVERRIDE))
+		SetGlobal("P#KivanSummoned","GLOBAL",2)
+		Continue()
+END
+
+IF
+	InPartyAllowDead("P#DEHER")
+	Global("P#DeherianaSummoned","GLOBAL",0)
+THEN
+	RESPONSE #100
+		ActionOverride("P#DEHER",ChangeAIScript("P#DE25",OVERRIDE))
+		SetGlobal("P#DeherianaSummoned","GLOBAL",2)
+		Continue()
+END

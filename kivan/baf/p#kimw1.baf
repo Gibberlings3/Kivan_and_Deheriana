@@ -1,0 +1,14 @@
+//Extends cut218g.bcs //
+
+IF
+  True()
+THEN
+  RESPONSE #100
+    CutSceneId("P#DEH01")
+    CreateVisualEffectObject("SPFLESHS",Myself)
+    Wait(1)
+    ChangeAnimation("HGWRA02")
+    Wait(1)
+    ActionOverride("P#DEH01",ChangeAnimation("HGWRA02"))
+    ChangeEnemyAlly("P#DEH01",ENEMY)
+END

@@ -1,0 +1,18 @@
+IF
+Global("Chapter","GLOBAL",%bg2_chapter_2%)
+Global("P#AnomenSaerk","GLOBAL",1)
+Global("AnomenIsKnight","GLOBAL",1)
+Alignment("ANOMEN", LAWFUL_GOOD)
+CombatCounter(0)
+See(Player1)
+InParty("P#Kivan")
+!StateCheck(Player1,STATE_SLEEPING)
+Global("P#KivanAnomenLovedSaerk","GLOBAL",1)
+Global("AnomenRomanceActive","GLOBAL",2)
+!GLOBAL("P#KivanRomanceInactive","GLOBAL",1)
+Global("P#AnomenKivanConflict","LOCALS",0)
+THEN
+RESPONSE #100
+SetGlobal("P#AnomenKivanConflict","LOCALS",1)
+StartDialogueNoSet(Player1)
+END

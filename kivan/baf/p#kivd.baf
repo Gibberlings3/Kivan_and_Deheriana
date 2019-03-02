@@ -1,0 +1,177 @@
+//DreamScripts
+
+IF
+InParty(Myself) 
+RealGlobalTimerExpired("P#KiFriendTalkTime","GLOBAL")
+ReputationGT(Player1,11)
+Global("P#KivanFriend","GLOBAL",1)
+Global("P#KiOldFriend","GLOBAL",1)
+!TimeOfDay(DAY)
+Global("P#KiFriendTalk","GLOBAL",9)
+THEN
+RESPONSE #100
+SetGlobal("P#KivanFriend","GLOBAL",2)
+IncrementGlobal("P#KiFriendTalk","GLOBAL",1)
+StartDialogueNoSet(Player1)
+END
+
+//After We recieved arrows from Captain Arat
+
+IF
+InParty(Myself) 
+CombatCounter(0) !See([ENEMY])
+Global("P#KivanArat","GLOBAL",1)
+THEN
+RESPONSE #100
+IncrementGlobal("P#KivanArat","GLOBAL",1)
+StartDialogueNoSet(Player1)
+END
+
+//During Chapter 4-5 Soulless Talk
+
+IF
+InParty(Myself) 
+CombatCounter(0) !See([ENEMY])
+GlobalGT("AsylumPlot","GLOBAL",40)
+GlobalLT("Chapter","GLOBAL",%bg2_chapter_6%)
+Global("P#KivanSoul","GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#KivanSoul","GLOBAL",1)
+StartDialogueNoSet(Player1)
+END
+
+//Banter with NPC
+
+IF
+RealGlobalTimerExpired("P#KivanRestTimer","GLOBAL")
+InParty(Myself)
+InParty("Mazzy")
+TimeOfDay(NIGHT)
+OR(9)
+AreaCheck("AR0021")
+AreaCheck("AR0313")
+AreaCheck("AR2202")
+AreaCheck("AR1105")
+AreaCheck("AR0704")
+AreaCheck("AR0522")
+AreaCheck("AR0514")
+AreaCheck("AR0509")
+AreaCheck("AR0406")
+OR(3) Global("P#DeherianaDead","GLOBAL",1) Global("P#DeherianaLives","GLOBAL",0) Global("P#DeherianaLives","GLOBAL",3)
+CombatCounter(0) !See([ENEMY])
+See("MAZZY")
+!StateCheck("MAZZY",STATE_SLEEPING)
+Global("P#MazzyTost","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#MazzyTost","GLOBAL",1)
+StartDialogueNoSet(Player1)
+END
+
+IF
+RealGlobalTimerExpired("P#KivanRestTimer","GLOBAL")
+InParty(Myself)
+InParty("Nalia")
+OR(9)
+AreaCheck("AR0021")
+AreaCheck("AR0313")
+AreaCheck("AR2202")
+AreaCheck("AR1105")
+AreaCheck("AR0704")
+AreaCheck("AR0522")
+AreaCheck("AR0514")
+AreaCheck("AR0509")
+AreaCheck("AR0406")
+Global("P#KINA2","LOCALS",0)
+THEN
+RESPONSE #100
+SetGlobal("P#KINA2","LOCALS",1)
+StartDialogueNoSet(Player1)
+END
+
+//Korgan
+IF
+RealGlobalTimerExpired("P#KivanRestTimer","GLOBAL")
+InParty(Myself)
+InParty("Korgan")
+OR(9)
+AreaCheck("AR0021")
+AreaCheck("AR0313")
+AreaCheck("AR2202")
+AreaCheck("AR1105")
+AreaCheck("AR0704")
+AreaCheck("AR0522")
+AreaCheck("AR0514")
+AreaCheck("AR0509")
+AreaCheck("AR0406")
+Global("P#KIKO4","GLOBAL",0)
+Global("P#KIKO1","LOCALS",1)
+THEN
+RESPONSE #100
+SetGlobal("P#KIKO4","GLOBAL",1)
+ActionOverride("korgan",StartDialogueNoSet("p#kivan"))
+END
+
+//Lovetalks
+IF
+GlobalLT("P#KivanOffence","GLOBAL",10)
+RealGlobalTimerExpired("P#KiLoveTalkTime","GLOBAL")
+InParty(Myself)
+AreaType(FOREST)
+ReputationGT(Player1,11)
+Global("P#KivanMatch","GLOBAL",1)
+Global("P#KivanLoveTalk","GLOBAL",3)
+!Global("P#KivanRomanceInactive","GLOBAL",1)
+Global("P#KivanRomanceActive","Global",1)
+THEN
+RESPONSE #100
+IncrementGlobal("P#KivanLoveTalk","GLOBAL",1)
+PlaySong(0)
+PlaySound("kivan00")
+StartDialogueNoSet(Player1)
+END
+
+IF
+RealGlobalTimerExpired("P#KiLoveTalkTime","GLOBAL")
+GlobalLT("P#KivanOffence","GLOBAL",10)
+InParty(Myself)
+AreaType(FOREST)
+ReputationGT(Player1,11)
+Global("P#KivanMatch","GLOBAL",1)
+Global("P#KivanLoveTalk","GLOBAL",1)
+!Global("P#KivanRomanceInactive","GLOBAL",1)
+Global("P#KivanRomanceActive","GLOBAL",1)
+THEN
+RESPONSE #100
+CreateCreature("P#SQUI",[-1.-1],0)
+IncrementGlobal("P#KivanLoveTalk","GLOBAL",1)
+MoveGlobalObject("P#SQUI","P#KIVAN")
+MoveGlobalObject(Player1,"P#KIVAN")
+PlaySong(0)
+PlaySound("kivan00")
+StartDialogueNoSet(Player1)
+END
+
+IF
+RealGlobalTimerExpired("P#KiLoveTalkTime","GLOBAL")
+InParty(Myself)
+ReputationGT(Player1,11)
+AreaType(FOREST)
+GlobalGT("P#KivanLoveTalk","GLOBAL",5)
+Global("P#KivanMatch","GLOBAL",1)
+!Global("P#KivanRomanceInactive","GLOBAL",1)
+Global("P#KivanRomanceActive","GLOBAL",1)
+GlobalLT("P#KivanOffence","GLOBAL",10)
+GlobalGT("P#KivanSweetTalk","GLOBAL",5)
+Global("P#KivanEmbersTalk","GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#KivanEmbersTalk","GLOBAL",1)
+IncrementGlobal("P#KivanLove","GLOBAL",1)
+PlaySong(0)
+PlaySound("kivan00")
+StartDialogueNoSet(Player1)
+END
+
+

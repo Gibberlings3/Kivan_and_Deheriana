@@ -1,0 +1,11 @@
+IF
+True()
+THEN
+RESPONSE #100
+CreateCreature("P#SQUI",[-1.-1],0)
+IncrementGlobal("P#KivanLoveTalk","GLOBAL",1)
+MoveGlobalObject("P#SQUI","P#KIVAN")
+MoveGlobalObject(Player1,"P#KIVAN")
+StartDialogueNoSet(Player1)
+EndCutSceneMode()
+END

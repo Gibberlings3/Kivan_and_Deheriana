@@ -1,0 +1,17 @@
+Deheriana is Dead: OR(3) Global("P#DeherianaDead","GLOBAL",1) Global("P#DeherianaLives","GLOBAL",0) Global("P#DeherianaLives","GLOBAL",3)
+Deheriana is Alive: OR(2) Global("P#DeherianaLives","GLOBAL",1)Global("P#DeherianaLives","GLOBAL",2)
+
+Kivan Takes Tazok's Heart:  Global("P#TazokHeart","GLOBAL",1)
+Kivan is Heald from T's heart: Global("P#TazokHeart","GLOBAL",2)
+Tazok's Heart: P#TAHE.ITM
+
+Kivan Don't want to talk any more: GlobalLT("P#KivanOffence","GLOBAL",10)
+
+Kivan's Tale about Orcs: ("P#KivanCoA","GLOBAL",1)
+
+Falling in Love Index: DO ~IncrementGlobal("P#KivanLove","GLOBAL",1)~
+
+///Global("P#KivanMatch","GLOBAL",1)
+!Global("P#KivanRomanceInactive","GLOBAL",1)
+Global("P#KivanRomanceActive","GLOBAL",1)
+GlobalLT("P#KivanOffence","GLOBAL",10)//

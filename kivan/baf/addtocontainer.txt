@@ -1,0 +1,7 @@
+IF
+Global("X#MithrilRing","FW1401",0)
+THEN
+RESPONSE #100
+SetGlobal("X#MithrilRing","FW1401",1)
+ActionOverride("Container1",CreateItem("X#XZMIRI",0,0,0))
+END

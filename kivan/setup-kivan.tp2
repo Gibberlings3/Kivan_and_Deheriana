@@ -1,0 +1,774 @@
+BACKUP ~Kivan/backup~
+//AUTHOR ~domi_sotto@gibberlings3.net~
+SUPPORT ~http://gibberlings3.net/forums/index.php?showforum=58~ 
+
+VERSION ~v16~
+
+README ~Kivan/readme-kivan-new.html~
+
+ALWAYS
+
+  ACTION_IF GAME_IS ~eet~ BEGIN
+    OUTER_SET bg2_chapter = 12
+  END ELSE BEGIN
+    OUTER_SET bg2_chapter = 0
+  END
+  OUTER_FOR (i=1; i<=10; i=i+1) BEGIN
+    OUTER_SET bg2_chapter = bg2_chapter + 1
+    OUTER_SPRINT name_source ~bg2_chapter_%i%~
+    OUTER_SET EVAL ~%name_source%~ = bg2_chapter
+  END
+
+  ACTION_IF NOT VARIABLE_IS_SET cd_always THEN BEGIN
+
+    OUTER_SET cd_always = 1 // just do this once per install
+    
+    ACTION_DEFINE_ARRAY cdnoconvert BEGIN ~setup-ee~ END // since this file is only used for EE games, it's already converted to utf8
+    ACTION_DEFINE_ARRAY cdreload BEGIN setup journal END
+    LAF HANDLE_CHARSETS
+      INT_VAR
+        infer_charset = 1
+      STR_VAR
+        tra_path = EVAL ~%MOD_FOLDER%/tra~
+        // charset_table = cdcharsets // Included for illustrative purposes.
+        noconvert_array = cdnoconvert
+        reload_array = cdreload
+    END
+  
+  END
+
+END
+
+
+AUTO_TRA ~Kivan/tra/%s~
+
+LANGUAGE
+  ~English~
+  ~english~ 
+  ~Kivan/tra/english/setup.tra~
+  ~Kivan/tra/english/journal.tra~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// main Kivan junk                                  \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @0 DESIGNATED 100
+REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @187
+
+/////                                                  \\\\\
+///// ee-specific stuff                                \\\\\
+/////                                                  \\\\\
+
+// cahrsets already converted in ALWAYS block
+
+// load alternative tra file for EE games
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+
+  LOAD_TRA ~Kivan/tra/%LANGUAGE%/setup-ee.tra~
+
+
+/////                                                  \\\\\
+///// bgee journal entries                             \\\\\
+/////                                                  \\\\\
+
+  ADD_JOURNAL EXISTING TITLE (#74427) @88 USING ~Kivan/tra/%LANGUAGE%/P#KIVJ.TRA~
+  ADD_JOURNAL EXISTING TITLE (#27238) @10000 @10001 @10002 @10003 @10004 
+  ADD_JOURNAL EXISTING TITLE (#74364) @25 @26 @72 @75 @79 USING ~Kivan/tra/%LANGUAGE%/P#DEH.TRA~
+
+END
+
+/////                                                  \\\\\
+///// ids fixes                                        \\\\\
+/////                                                  \\\\\
+
+//This is IDS patching for non-ToB  installs
+ACTION_IF GAME_IS ~bgt bg2 tob~ THEN BEGIN
+  APPEND ~ACTION.IDS~ ~31 SpellRES(S:RES*,O:Target*)~
+             UNLESS ~31 SpellRES(S:RES\*,O:Target\*)~
+  APPEND ~ACTION.IDS~ ~95 SpellPointRES(S:RES*,P:Target*)~
+             UNLESS ~95 SpellPointRES(S:RES\*,P:Target\*)~
+  APPEND ~ACTION.IDS~ ~113 ForceSpellRES(S:RES*,O:Target)~
+             UNLESS ~113 ForceSpellRES(S:RES\*,O:Target)~
+  APPEND ~ACTION.IDS~ ~114 ForceSpellPointRES(S:RES*,P:Target)~
+             UNLESS ~114 ForceSpellPointRES(S:RES\*,P:Target)~
+  APPEND ~ACTION.IDS~ ~147 RemoveSpellRES(S:Spell*)~
+             UNLESS ~147 RemoveSpellRES(S:Spell\*)~
+  APPEND ~ACTION.IDS~ ~160 ApplySpellRES(S:RES*,O:Target)~
+             UNLESS ~160 ApplySpellRES(S:RES\*,O:Target)~
+  APPEND ~ACTION.IDS~ ~181 ReallyForceSpellRES(S:RES*,O:Target)~
+             UNLESS ~181 ReallyForceSpellRES(S:RES\*,O:Target)~
+  APPEND ~ACTION.IDS~ ~191 SpellNoDecRES(S:RES*,O:Target*)~
+             UNLESS ~191 SpellNoDecRES(S:RES\*,O:Target\*)~
+  APPEND ~ACTION.IDS~ ~192 SpellPointNoDecRES(S:RES*,P:Target*)~
+             UNLESS ~192 SpellPointNoDecRES(S:RES\*,P:Target\*)~
+  APPEND ~ACTION.IDS~ ~240 ReallyForceSpellDeadRES(S:RES*,O:Target)~
+             UNLESS ~240 ReallyForceSpellDeadRES(S:RES\*,O:Target)~
+  APPEND ~ACTION.IDS~ ~318 ForceSpellRangeRES(S:RES*,O:Target)~
+             UNLESS ~318 ForceSpellRangeRES(S:RES\*,O:Target)~
+  APPEND ~ACTION.IDS~ ~319 ForceSpellPointRangeRES(S:RES*,P:Target)~
+             UNLESS ~319 ForceSpellPointRangeRES(S:RES\*,P:Target)~
+  APPEND ~ACTION.IDS~ ~337 ReallyForceSpellPointRES(S:RES*,P:Target*)~
+             UNLESS ~337 ReallyForceSpellPointRES(S:RES\*,P:Target\*)~
+  COPY_EXISTING ~action.ids~ ~override~
+    REPLACE_TEXTUALLY ~^106 Shout(.*$~ ~106 Shout(I:ID*SHOUTIDS)~
+    BUT_ONLY_IF_IT_CHANGES
+
+  APPEND ~TRIGGER.IDS~ ~0x00A1 SpellCastOnMeRES(S:Spell*,O:Caster*)~
+              UNLESS ~0x00A1 SpellCastOnMeRES(S:Spell\*,O:Caster\*)~
+  APPEND ~TRIGGER.IDS~ ~0x0091 SpellCastRES(S:Spell*,O:Object*)~
+              UNLESS ~0x0091 SpellCastRES(S:Spell\*,O:Object\*)~
+  APPEND ~TRIGGER.IDS~ ~0x00A6 SpellCastPriestRES(S:Spell*,O:Object*)~
+              UNLESS ~0x00A6 SpellCastPriestRES(S:Spell\*,O:Object\*)~
+  APPEND ~TRIGGER.IDS~ ~0x00A7 SpellCastInnateRES(S:Spell*,O:Object*)~
+              UNLESS ~0x00A7 SpellCastInnateRES(S:Spell\*,O:Object\*)~
+  APPEND ~TRIGGER.IDS~ ~0x4031 HaveSpellRES(S:Spell*)~
+              UNLESS ~0x4031 HaveSpellRES(S:Spell\*)~
+  APPEND ~TRIGGER.IDS~ ~0x40D5 ActuallyInCombat()~
+              UNLESS ~0x40D5 ActuallyInCombat()~
+  COPY_EXISTING ~trigger.ids~ ~override~
+    REPLACE_TEXTUALLY ~\bHeard(O:Object\*,I:ID\*)~
+                    ~Heard(O:Object*,I:ID*SHOUTIDS)~
+    BUT_ONLY_IF_IT_CHANGES
+END
+
+/////                                                  \\\\\
+///// dialogue compiles                                \\\\\
+/////                                                  \\\\\
+
+COMPILE ~Kivan/d/P#KIVAN.d~
+COMPILE ~Kivan/d/BP#KIV.d~
+COMPILE EVALUATE_BUFFER ~Kivan/d/P#KIVSOA.d~
+COMPILE EVALUATE_BUFFER ~Kivan/d/P#KINEW.d~
+COMPILE ~Kivan/d/P#KILT.d~
+COMPILE ~Kivan/d/BP#DEH.d~
+COMPILE ~Kivan/d/P#KIRING.D~
+COMPILE ~Kivan/d/P#KIMAQ.D~
+COMPILE EVALUATE_BUFFER ~Kivan/d/P#KIITM.D~
+COMPILE EVALUATE_BUFFER ~Kivan/d/P#KIVJ.d~
+COMPILE EVALUATE_BUFFER ~Kivan/d/P#KIPID.D~
+COMPILE ~Kivan/d/P#KIRING.D~ // Lover's Ring
+
+ACTION_IF GAME_IS ~tob bgt bg2ee eet~ THEN BEGIN
+
+  COMPILE ~Kivan/d/BP#KIV25.d~
+  COMPILE ~Kivan/d/BP#DEH25.d~
+  COMPILE ~Kivan/d/P#KI25J.d~
+  COMPILE ~Kivan/d/P#KIMW.d~
+  COMPILE ~Kivan/d/P#KIFT25.d~
+  COMPILE ~Kivan/d/P#KILT25.d~
+  COMPILE ~Kivan/d/P#DEFT25.d~
+  COMPILE ~Kivan/d/P#PID25.D~
+  COMPILE ~Kivan/d/P#PIDE25.D~
+
+END
+
+/////                                                  \\\\\
+///// scripting                                        \\\\\
+/////                                                  \\\\\
+
+//The following compiles baf files
+COMPILE ~Kivan/baf/P#KIVAN.baf~
+COMPILE EVALUATE_BUFFER ~Kivan/baf/P#KIV01.baf~ USING ~Kivan/tra/english/setup.tra~
+COMPILE EVALUATE_BUFFER ~Kivan/baf/P#KIVD.baf~
+COMPILE ~Kivan/baf/P#KISQ.baf~
+COMPILE ~Kivan/baf/P#DEHER.baf~
+COMPILE ~Kivan/baf/P#DEH01.baf~
+
+EXTEND_TOP    ~ANOMEN.bcs~  ~Kivan/baf/P#ANOM.baf~ EVALUATE_BUFFER 
+EXTEND_TOP    ~P#KIV01.bcs~ ~Kivan/baf/P#KILOVE.baf~
+EXTEND_BOTTOM ~AR0300.bcs~  ~Kivan/baf/P#AR0300.baf~
+EXTEND_BOTTOM ~AR0700.bcs~  ~Kivan/baf/P#AR0700.baf~ EVALUATE_BUFFER 
+EXTEND_BOTTOM ~AR0703.bcs~  ~Kivan/baf/P#AR0703.baf~
+EXTEND_BOTTOM ~AR2300.BCS~  ~Kivan/baf/P#AR2300.BAF~
+EXTEND_BOTTOM ~AR2801.bcs~  ~Kivan/baf/P#AR2801.baf~
+EXTEND_BOTTOM ~EDWIND.bcs~  ~Kivan/baf/P#EDWID.baf~
+EXTEND_BOTTOM ~P#KIV01.bcs~ ~Kivan/baf/P#KIRIBF.baf~ EVALUATE_BUFFER  //Lover's Ring
+
+ACTION_IF NOT ((GAME_IS ~bg2ee eet~) OR (FILE_EXISTS_IN_GAME ~cdbehbla.pro~)) THEN BEGIN // only if not bg2ee or non-fixpacked game
+
+  EXTEND_TOP    ~AR1303.bcs~  ~Kivan/baf/P#AR1303.baf~ // Fixing Glacias
+
+END
+
+ACTION_IF GAME_IS ~tob bgt bg2ee eet~ THEN BEGIN
+  
+  COMPILE ~Kivan/baf/P#KIMW.baf~
+  COMPILE ~Kivan/baf/P#KI25.baf~
+  COMPILE ~Kivan/baf/P#DE25.baf~
+  COMPILE ~Kivan/baf/P#KI25D.baf~
+  COMPILE ~Kivan/baf/P#DEHBAT.baf~
+  
+  EXTEND_BOTTOM ~cut218g.bcs~  ~Kivan/baf/P#KIMW1.baf~
+  EXTEND_TOP    ~ar6200.bcs~   ~Kivan/baf/P#KITHRO.BAF~
+  EXTEND_BOTTOM ~BOTSMITH.bcs~ ~Kivan/baf/P#BOTSMITH.baf~
+
+END
+
+
+/////                                                  \\\\\
+///// portraits                                        \\\\\
+/////                                                  \\\\\
+
+ACTION_IF GAME_IS ~bg2ee eet~ BEGIN
+
+  COPY ~Kivan/bmp/ee/DEHERL.bmp~  ~override~
+       ~Kivan/bmp/ee/DEHERM.bmp~  ~override~
+       ~Kivan/bmp/ee/DEHERS.bmp~  ~override~
+       ~Kivan/bmp/ee/P#SEASN.bmp~ ~override~ // seasnake
+       ~Kivan/BMP/ee/P#NEIL.bmp~  ~override~ //Neiros
+       ~Kivan/BMP/ee/P#NEIS.bmp~  ~override~ //Neiros
+       ~Kivan/bmp/ee/P#KI1L.bmp~  ~override~
+       ~Kivan/bmp/ee/P#KI1M.bmp~  ~override~
+       ~Kivan/bmp/ee/P#KI1S.bmp~  ~override~
+
+END ELSE BEGIN
+
+  COPY ~Kivan/bmp/DEHERL.bmp~  ~override~
+       ~Kivan/bmp/DEHERM.bmp~  ~override~
+       ~Kivan/bmp/DEHERS.bmp~  ~override~
+       ~Kivan/bmp/P#SEASN.bmp~ ~override~ // seasnake
+       ~Kivan/BMP/P#NEIL.bmp~  ~override~ //Neiros
+       ~Kivan/BMP/P#NEIS.bmp~  ~override~ //Neiros
+       ~Kivan/bmp/P#KI1L.bmp~  ~override~
+       ~Kivan/bmp/P#KI1M.bmp~  ~override~
+       ~Kivan/bmp/P#KI1S.bmp~  ~override~
+
+END
+
+/////                                                  \\\\\
+///// items                                            \\\\\
+/////                                                  \\\\\
+
+//Tazok's heart - needs fancier description
+COPY ~Kivan/itm/P#TAHE.ITM~ ~override~
+  SAY NAME1 @95
+  SAY NAME2 @95
+  SAY UNIDENTIFIED_DESC @96
+  SAY DESC @96
+
+COPY ~kivan/itm/P#BOW.ITM~ ~override~
+  SAY NAME1 @97
+  SAY NAME2 @97
+  SAY DESC @98
+
+COPY ~kivan/itm/P#BOW01.ITM~ ~override~
+  SAY NAME1 @97
+  SAY NAME2 @97
+  SAY DESC @99
+
+COPY ~kivan/bam/IP#HO01.BAM~ ~override~
+COPY ~kivan/itm/P#HOOD.ITM~ ~override~
+  SAY NAME1 @100
+  SAY NAME2 @100
+  SAY DESC @101
+
+COPY ~kivan/itm/P#UL11.ITM~ ~override~
+
+COPY ~kivan/itm/P#IHTIA.ITM~ ~override~
+  SAY NAME1 @102
+  SAY NAME2 @102
+  SAY DESC @103
+
+COPY_EXISTING ~MISC5E.itm~ ~override/P#DREAM.itm~
+  SAY NAME1 @93
+  SAY NAME2 @93
+  SAY DESC @94
+
+COPY ~kivan/itm/P#AROW.ITM~ ~override~
+  SAY 0x08 @183
+  SAY 0x0c @183
+  SAY 0x50 @185
+  SAY 0x54 @185
+
+COPY_EXISTING ~MISC51.ITM~ ~override/P#KISTR.ITM~
+  SAY NAME1 @155
+  SAY NAME2 @155
+  SAY UNIDENTIFIED_DESC @156
+  SAY DESC @156
+
+COPY ~Kivan/itm/X#KISPEA.ITM~ ~override~
+  SAY NAME1 @157
+  SAY NAME2 @158
+  SAY UNIDENTIFIED_DESC @159
+  SAY DESC @160
+
+// Adding the Nosering to King in Sahuagin City
+
+COPY_EXISTING ~sahkng01.cre~ ~override~
+  ADD_CRE_ITEM ~P#IHTIA~ #0 #0 #0 ~IDENTIFIED~ ~INV6~
+
+COPY_EXISTING ~sahkng02.cre~ ~override~
+  ADD_CRE_ITEM ~P#IHTIA~ #0 #0 #0 ~IDENTIFIED~ ~INV6~
+
+ACTION_IF GAME_IS ~tob bgt bg2ee~ THEN BEGIN
+
+  COPY ~Kivan/bam/IWREAT.BAM~ ~override~
+       ~Kivan/bam/CWREAT.BAM~ ~override~
+  
+  COPY ~Kivan/itm/P#WREATH.ITM~ ~override~
+    SAY NAME1 @176
+    SAY NAME2 @176
+    SAY UNIDENTIFIED_DESC @177
+    SAY DESC @178
+  
+  COPY ~Kivan/itm/P#BOW02.ITM~ ~override~
+    SAY NAME1 @179
+    SAY NAME2 @179
+    SAY UNIDENTIFIED_DESC @180  
+    SAY DESC @181
+
+END
+
+/////                                                  \\\\\
+///// spells                                           \\\\\
+/////                                                  \\\\\
+
+COPY ~Kivan/spl/P#WISH04.spl~ ~override~
+     ~Kivan/spl/P#DEHE01.SPL~ ~override~
+
+/////                                                  \\\\\
+///// creatures                                        \\\\\
+/////                                                  \\\\\
+
+//Shong
+COPY ~Kivan/CRE/p#shong.cre~ ~override~
+  SAY NAME1 @104
+  SAY NAME2 @104
+  SAY INITIAL_MEETING @105
+  SAY MORALE @106
+  SAY HAPPY @107
+  SAY UNHAPPY_ANNOYED @108
+  SAY UNHAPPY_SERIOUS @109
+  SAY UNHAPPY_BREAKING @110
+  SAY LEADER @111
+  SAY TIRED @112
+  SAY BORED @113
+  SAY BATTLE_CRY1 @114
+  SAY BATTLE_CRY2 @115
+  SAY BATTLE_CRY3 @116
+  SAY BATTLE_CRY4 @117
+  SAY DAMAGE @118
+  SAY DYING @119
+  SAY HURT @120
+  SAY AREA_FOREST @121
+  SAY AREA_CITY @122
+  SAY AREA_DUNGEON @123
+  SAY AREA_DAY @124
+  SAY AREA_NIGHT @125
+  SAY SELECT_COMMON1 @126
+  SAY SELECT_COMMON2 @127
+  SAY SELECT_COMMON3 @128
+  SAY SELECT_COMMON4 @129
+  SAY SELECT_COMMON5 @130
+  SAY SELECT_COMMON6 @131
+  SAY SELECT_ACTION1 @132
+  SAY SELECT_ACTION2 @133
+  SAY SELECT_ACTION3 @134
+  SAY SELECT_ACTION4 @135
+  SAY SELECT_ACTION5 @136
+  SAY SELECT_ACTION6 @137
+  SAY SELECT_ACTION7 @138
+  SAY SELECT_RARE1 @139
+  SAY SELECT_RARE2 @140
+  SAY CRITICAL_HIT @141
+  SAY CRITICAL_MISS @142
+  SAY TARGET_IMMUNE @143
+  SAY INVENTORY_FULL @144
+  SAY PICKED_POCKET @145
+  SAY HIDDEN_IN_SHADOWS @146
+  SAY SPELL_DISRUPTED @147
+  SAY SET_A_TRAP @148
+  SAY BIO @149
+
+COPY ~Kivan/CRE/P#SEASN.cre~ ~override~
+  SAY NAME1 @150
+  SAY NAME2 @151
+
+//Seasnake #1
+COPY_EXISTING ~P#SEASN.cre~ ~override/P#SEAS1.cre~
+  WRITE_ASCII 0x280 ~seasnake1~// death variable
+
+//Chislav
+COPY ~Kivan/CRE/P#CHISL.cre~ ~override~
+  SAY NAME1 @152
+  SAY NAME2 @152
+
+COPY ~Kivan/CRE/P#NEIROS.cre~ ~override~
+  SAY NAME1 @153
+  SAY NAME2 @154
+
+COPY ~Kivan/cre/P#SQUI.cre~ ~override~
+
+COPY ~Kivan/cre/P#KIVAN.cre~ ~override~
+  SAY NAME1 @1
+  SAY NAME2 @1
+//   SAY INITIAL_MEETING @2
+  SAY MORALE @3
+  SAY HAPPY @4
+  SAY UNHAPPY_ANNOYED @5
+  SAY UNHAPPY_SERIOUS @6
+  SAY UNHAPPY_BREAKING @7
+  SAY LEADER @8
+  SAY TIRED @9
+  SAY BORED @10
+  SAY BATTLE_CRY1 @11
+  SAY BATTLE_CRY2 @12
+  SAY BATTLE_CRY3 @13
+  SAY BATTLE_CRY4 @14
+  SAY DAMAGE @15
+  SAY DYING @16
+  SAY HURT @17
+//   SAY AREA_FOREST @18
+  SAY AREA_CITY @19
+  SAY AREA_DUNGEON @20
+//   SAY AREA_DAY @21
+//   SAY AREA_NIGHT @22
+  SAY SELECT_COMMON1 @23
+  SAY SELECT_COMMON2 @24
+  SAY SELECT_COMMON3 @25
+  SAY SELECT_COMMON4 @26
+  SAY SELECT_COMMON5 @27
+  SAY SELECT_COMMON6 @28
+  SAY SELECT_ACTION1 @29
+  SAY SELECT_ACTION2 @30
+  SAY SELECT_ACTION3 @31
+  SAY SELECT_ACTION4 @32
+  SAY SELECT_ACTION5 @33
+  SAY SELECT_ACTION6 @34
+  SAY SELECT_ACTION7 @35
+  SAY SELECT_RARE1 @36
+  SAY SELECT_RARE2 @37
+  SAY CRITICAL_HIT @38
+  SAY CRITICAL_MISS @39
+  SAY TARGET_IMMUNE @40
+  SAY INVENTORY_FULL @41
+  SAY PICKED_POCKET @42
+  SAY HIDDEN_IN_SHADOWS @43
+  SAY SPELL_DISRUPTED @44
+  SAY SET_A_TRAP @45
+  SAY BIO @46
+
+COPY ~Kivan/cre/P#DEHER.cre~ ~override~ // fmc version
+  SAY NAME1 @47
+  SAY NAME2 @47
+//   SAY INITIAL_MEETING @48
+  SAY MORALE @49
+  SAY HAPPY @50
+  SAY UNHAPPY_ANNOYED @51
+  SAY UNHAPPY_SERIOUS @52
+  SAY UNHAPPY_BREAKING @53
+  SAY LEADER @54
+  SAY TIRED @55
+  SAY BORED @56
+  SAY BATTLE_CRY1 @57
+  SAY BATTLE_CRY2 @58
+  SAY BATTLE_CRY3 @59
+  SAY BATTLE_CRY4 @60
+  SAY DAMAGE @61
+  SAY DYING @62
+  SAY HURT @63
+  SAY AREA_FOREST @64
+  SAY AREA_CITY @65
+  SAY AREA_DUNGEON @66
+  SAY AREA_DAY @67
+  SAY AREA_NIGHT @68
+  SAY SELECT_COMMON1 @69
+  SAY SELECT_COMMON2 @70
+  SAY SELECT_COMMON3 @71
+  SAY SELECT_COMMON4 @72
+  SAY SELECT_COMMON5 @73
+  SAY SELECT_COMMON6 @74
+  SAY SELECT_ACTION1 @75
+  SAY SELECT_ACTION2 @76
+  SAY SELECT_ACTION3 @77
+  SAY SELECT_ACTION4 @78
+  SAY SELECT_ACTION5 @79
+  SAY SELECT_ACTION6 @80
+  SAY SELECT_ACTION7 @81
+  SAY SELECT_RARE1 @82
+  SAY SELECT_RARE2 @83
+  SAY CRITICAL_HIT @84
+  SAY CRITICAL_MISS @85
+  SAY TARGET_IMMUNE @86
+  SAY INVENTORY_FULL @87
+  SAY PICKED_POCKET @88
+  SAY HIDDEN_IN_SHADOWS @89
+  SAY SPELL_DISRUPTED @90
+  SAY SET_A_TRAP @91
+  SAY BIO @92
+
+COPY ~Kivan/cre/P#LILCO.cre~ ~override~
+  SAY NAME1 @161
+  SAY NAME2 @161
+
+ACTION_IF GAME_IS ~tob bgt bg2ee~ THEN BEGIN
+
+  COPY ~Kivan/cre/P#DEH01.cre~ ~override~
+    SAY NAME1 @47
+    SAY NAME2 @47
+
+END
+
+/////                                                  \\\\\
+///// 2da junk                                         \\\\\
+/////                                                  \\\\\
+
+ACTION_IF GAME_IS ~tob bgt bg2ee eet~ THEN BEGIN // tob
+
+  // assign joined dialogue, banter
+  APPEND ~pdialog.2da~  ~P#KIVAN P#KIVP P#KIVJ P#KIVD P#KI25P P#KI25J P#KI25D P#KI25~ UNLESS ~P#KIVAN~
+  APPEND ~pdialog.2da~  ~P#DEHER P#DEHP P#DEHJ P#DEHD P#DE25P P#DE25J P#DE25D P#DE25~ UNLESS ~P#DEHER~
+  APPEND ~interdia.2da~ ~P#KIVAN BP#KIV BP#KIV25~ UNLESS ~P#KIVAN~
+  APPEND ~interdia.2da~ ~P#DEHER BP#DEH BP#DEH25~ UNLESS ~P#DEHER~  
+  
+  //Master-Wraith and Epilogues
+  COPY ~Kivan/Epilogue/PKIVAZZ.2da~ ~override/PKIVA01.2da~
+    REPLACE ~99999~ @172
+  
+  COPY ~Kivan/Epilogue/PKIVAZZ.2da~ ~override/PKIVA02.2da~
+    REPLACE ~99999~ @173
+  
+  COPY ~Kivan/Epilogue/PKIVAZZ.2da~ ~override/PKIVA03.2da~
+    REPLACE ~99999~ @174
+
+  COPY ~Kivan/Epilogue/PDEHEZZ.2da~ ~override/PDEHE01.2da~
+    REPLACE ~99999~ @175
+
+END ELSE BEGIN
+
+  // assign joined dialogue, banter
+  APPEND ~pdialog.2da~  ~P#KIVAN P#KIVP P#KIVJ P#KIVD~ UNLESS ~P#KIVAN~
+  APPEND ~pdialog.2da~  ~P#DEHER P#DEHP P#DEHJ P#DEHD~ UNLESS ~P#DEHER~
+  APPEND ~interdia.2da~ ~P#KIVAN BP#KIV~ UNLESS ~P#KIVAN~
+  APPEND ~interdia.2da~ ~P#DEHER BP#DEH~ UNLESS ~P#DEHER~
+
+END
+
+/////                                                  \\\\\
+///// audio                                            \\\\\
+/////                                                  \\\\\
+
+COPY ~kivan/audio/p#blank.mus~ ~music~
+COPY_EXISTING ~songlist.2da~ ~override~
+  SET_2DA_ENTRY 0 2 3 ~P#BLANK.MUS~
+
+LAF HANDLE_AUDIO END
+
+
+/////                                                  \\\\\
+///// EET: change script in ToB                        \\\\\
+/////                                                  \\\\\
+
+ACTION_IF GAME_IS ~eet~ THEN BEGIN
+  EXTEND_BOTTOM ~AR4000.bcs~ ~kivan/baf/p#ar4000_eet.baf~     
+	EVALUATE_BUFFER
+END
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// alternative deheriana class                      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// wild mage                                        \\\\\
+/////                                                  \\\\\
+
+BEGIN @165 DESIGNATED 200
+SUBCOMPONENT @164
+REQUIRE_COMPONENT ~kivan/setup-kivan.tp2~ ~100~ @186
+
+COPY ~Kivan/cre/P#DEHWMA.cre~ ~override/P#DEHER.cre~
+  SAY NAME1 @47
+  SAY NAME2 @47
+//   SAY INITIAL_MEETING @48
+  SAY MORALE @49
+  SAY HAPPY @50
+  SAY UNHAPPY_ANNOYED @51
+  SAY UNHAPPY_SERIOUS @52
+  SAY UNHAPPY_BREAKING @53
+  SAY LEADER @54
+  SAY TIRED @55
+  SAY BORED @56
+  SAY BATTLE_CRY1 @57
+  SAY BATTLE_CRY2 @58
+  SAY BATTLE_CRY3 @59
+  SAY BATTLE_CRY4 @60
+  SAY DAMAGE @61
+  SAY DYING @62
+  SAY HURT @63
+  SAY AREA_FOREST @64
+  SAY AREA_CITY @65
+  SAY AREA_DUNGEON @66
+  SAY AREA_DAY @67
+  SAY AREA_NIGHT @68
+  SAY SELECT_COMMON1 @69
+  SAY SELECT_COMMON2 @70
+  SAY SELECT_COMMON3 @71
+  SAY SELECT_COMMON4 @72
+  SAY SELECT_COMMON5 @73
+  SAY SELECT_COMMON6 @74
+  SAY SELECT_ACTION1 @75
+  SAY SELECT_ACTION2 @76
+  SAY SELECT_ACTION3 @77
+  SAY SELECT_ACTION4 @78
+  SAY SELECT_ACTION5 @79
+  SAY SELECT_ACTION6 @80
+  SAY SELECT_ACTION7 @81
+  SAY SELECT_RARE1 @82
+  SAY SELECT_RARE2 @83
+  SAY CRITICAL_HIT @84
+  SAY CRITICAL_MISS @85
+  SAY TARGET_IMMUNE @86
+  SAY INVENTORY_FULL @87
+  SAY PICKED_POCKET @88
+  SAY HIDDEN_IN_SHADOWS @89
+  SAY SPELL_DISRUPTED @90
+  SAY SET_A_TRAP @91
+  SAY BIO @92
+
+/////                                                  \\\\\
+///// enchanter                                        \\\\\
+/////                                                  \\\\\
+
+BEGIN @166 DESIGNATED 201
+SUBCOMPONENT @164
+REQUIRE_COMPONENT ~kivan/setup-kivan.tp2~ ~100~ @186
+
+COPY ~Kivan/cre/P#DEHENC.cre~ ~override/P#DEHER.cre~
+  SAY NAME1 @47
+  SAY NAME2 @47
+//   SAY INITIAL_MEETING @48
+  SAY MORALE @49
+  SAY HAPPY @50
+  SAY UNHAPPY_ANNOYED @51
+  SAY UNHAPPY_SERIOUS @52
+  SAY UNHAPPY_BREAKING @53
+  SAY LEADER @54
+  SAY TIRED @55
+  SAY BORED @56
+  SAY BATTLE_CRY1 @57
+  SAY BATTLE_CRY2 @58
+  SAY BATTLE_CRY3 @59
+  SAY BATTLE_CRY4 @60
+  SAY DAMAGE @61
+  SAY DYING @62
+  SAY HURT @63
+  SAY AREA_FOREST @64
+  SAY AREA_CITY @65
+  SAY AREA_DUNGEON @66
+  SAY AREA_DAY @67
+  SAY AREA_NIGHT @68
+  SAY SELECT_COMMON1 @69
+  SAY SELECT_COMMON2 @70
+  SAY SELECT_COMMON3 @71
+  SAY SELECT_COMMON4 @72
+  SAY SELECT_COMMON5 @73
+  SAY SELECT_COMMON6 @74
+  SAY SELECT_ACTION1 @75
+  SAY SELECT_ACTION2 @76
+  SAY SELECT_ACTION3 @77
+  SAY SELECT_ACTION4 @78
+  SAY SELECT_ACTION5 @79
+  SAY SELECT_ACTION6 @80
+  SAY SELECT_ACTION7 @81
+  SAY SELECT_RARE1 @82
+  SAY SELECT_RARE2 @83
+  SAY CRITICAL_HIT @84
+  SAY CRITICAL_MISS @85
+  SAY TARGET_IMMUNE @86
+  SAY INVENTORY_FULL @87
+  SAY PICKED_POCKET @88
+  SAY HIDDEN_IN_SHADOWS @89
+  SAY SPELL_DISRUPTED @90
+  SAY SET_A_TRAP @91
+  SAY BIO @92
+
+/////                                                  \\\\\
+///// diviner                                          \\\\\
+/////                                                  \\\\\
+
+BEGIN @167 DESIGNATED 202
+SUBCOMPONENT @164
+REQUIRE_COMPONENT ~kivan/setup-kivan.tp2~ ~100~ @186
+
+COPY ~Kivan/cre/P#DEHDIV.cre~ ~override/P#DEHER.cre~
+  SAY NAME1 @47
+  SAY NAME2 @47
+//   SAY INITIAL_MEETING @48
+  SAY MORALE @49
+  SAY HAPPY @50
+  SAY UNHAPPY_ANNOYED @51
+  SAY UNHAPPY_SERIOUS @52
+  SAY UNHAPPY_BREAKING @53
+  SAY LEADER @54
+  SAY TIRED @55
+  SAY BORED @56
+  SAY BATTLE_CRY1 @57
+  SAY BATTLE_CRY2 @58
+  SAY BATTLE_CRY3 @59
+  SAY BATTLE_CRY4 @60
+  SAY DAMAGE @61
+  SAY DYING @62
+  SAY HURT @63
+  SAY AREA_FOREST @64
+  SAY AREA_CITY @65
+  SAY AREA_DUNGEON @66
+  SAY AREA_DAY @67
+  SAY AREA_NIGHT @68
+  SAY SELECT_COMMON1 @69
+  SAY SELECT_COMMON2 @70
+  SAY SELECT_COMMON3 @71
+  SAY SELECT_COMMON4 @72
+  SAY SELECT_COMMON5 @73
+  SAY SELECT_COMMON6 @74
+  SAY SELECT_ACTION1 @75
+  SAY SELECT_ACTION2 @76
+  SAY SELECT_ACTION3 @77
+  SAY SELECT_ACTION4 @78
+  SAY SELECT_ACTION5 @79
+  SAY SELECT_ACTION6 @80
+  SAY SELECT_ACTION7 @81
+  SAY SELECT_RARE1 @82
+  SAY SELECT_RARE2 @83
+  SAY CRITICAL_HIT @84
+  SAY CRITICAL_MISS @85
+  SAY TARGET_IMMUNE @86
+  SAY INVENTORY_FULL @87
+  SAY PICKED_POCKET @88
+  SAY HIDDEN_IN_SHADOWS @89
+  SAY SPELL_DISRUPTED @90
+  SAY SET_A_TRAP @91
+  SAY BIO @92
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// alternative kivan portrait                       \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @170 DESIGNATED 300
+REQUIRE_COMPONENT ~kivan/setup-kivan.tp2~ ~100~ @186
+
+ACTION_IF GAME_IS ~bg2ee eet~ BEGIN
+
+  COPY ~Kivan/bmp/ee/P#KI2L.bmp~ ~override/P#KI1L.bmp~
+  COPY ~Kivan/bmp/ee/P#KI2M.bmp~ ~override/P#KI1M.bmp~
+  COPY ~Kivan/bmp/ee/P#KI2S.bmp~ ~override/P#KI1S.bmp~
+
+END ELSE BEGIN
+
+  COPY ~Kivan/bmp/P#KI2L.bmp~ ~override/P#KI1L.bmp~
+  COPY ~Kivan/bmp/P#KI2M.bmp~ ~override/P#KI1M.bmp~
+  COPY ~Kivan/bmp/P#KI2S.bmp~ ~override/P#KI1S.bmp~
+
+END

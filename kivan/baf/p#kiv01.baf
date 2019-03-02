@@ -1,0 +1,2001 @@
+/* EET: Kivan will be gone if she wasn't in party during transition */
+
+
+IF
+!InParty(Myself)
+GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)
+THEN
+RESPONSE #100
+DestroySelf()
+END
+
+IF
+  Global("P#KivanRomanceActive","GLOBAL",1)
+  Global("P#KivanRomanceInactive","GLOBAL",0)
+  OR(2)
+    GlobalLT("P#KivanLove","GLOBAL",3)
+    GlobalGT("P#KivanOffence","GLOBAL",4)
+THEN
+  RESPONSE #100
+    SetGlobal("P#KivanRomanceActive","GLOBAL",0)
+    SetGlobal("P#KivanRomanceInactive","GLOBAL",1)
+END
+
+IF
+  Global("P#KivanRomanceActive","GLOBAL",0)
+  Global("P#KivanRomanceInactive","GLOBAL",1)
+  GlobalGT("P#KivanLove","GLOBAL",5)
+  !GlobalGT("P#KivanOffence","GLOBAL",4)
+THEN
+  RESPONSE #100
+    SetGlobal("P#KivanRomanceActive","GLOBAL",1)
+    SetGlobal("P#KivanRomanceInactive","GLOBAL",0)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactAnomenLight","GLOBAL",0)
+  Global("AnomenRomanceActive","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactAnomenLight","GLOBAL",1)
+    IncrementGlobal("P#KivanLove","GLOBAL",-3)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactAnomenLight","GLOBAL",1)
+  Global("AnomenRomanceActive","GLOBAL",3)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactAnomenLight","GLOBAL",2)
+    IncrementGlobal("P#KivanLove","GLOBAL",3)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactAnomenSerious","GLOBAL",0)
+  Global("AnomenRomanceActive","GLOBAL",2)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactAnomenSerious","GLOBAL",1)
+    SetGlobal("P#KivanLove","GLOBAL",-10)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactAnomenSerious","GLOBAL",1)
+  Global("AnomenRomanceActive","GLOBAL",3)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactAnomenSerious","GLOBAL",2)
+    IncrementGlobal("P#KivanLove","GLOBAL",5)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactKelseyLight","GLOBAL",0)
+  Global("J#KelseyRomanceActive","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactKelseyLight","GLOBAL",1)
+    IncrementGlobal("P#KivanLove","GLOBAL",-3)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactKelseyLight","GLOBAL",1)
+  Global("J#KelseyRomanceActive","GLOBAL",3)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactKelseyLight","GLOBAL",2)
+    IncrementGlobal("P#KivanLove","GLOBAL",3)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactKelseySerious","GLOBAL",0)
+  Global("J#KelseyRomanceActive","GLOBAL",2)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactKelseySerious","GLOBAL",1)
+    SetGlobal("P#KivanLove","GLOBAL",-10)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactKelseySerious","GLOBAL",1)
+  Global("J#KelseyRomanceActive","GLOBAL",3)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactKelseySerious","GLOBAL",2)
+    IncrementGlobal("P#KivanLove","GLOBAL",5)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactSolaLight","GLOBAL",0)
+  GlobalGT("SolaTalk","GLOBAL",1)
+  GlobalLT("SolaTalk","GLOBAL",15)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactSolaLight","GLOBAL",1)
+    IncrementGlobal("P#KivanLove","GLOBAL",-3)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactSolaLight","GLOBAL",1)
+  Global("SolaTalk","GLOBAL",-1)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactSolaLight","GLOBAL",2)
+    IncrementGlobal("P#KivanLove","GLOBAL",3)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactSolaSerious","GLOBAL",0)
+  GlobalGT("SolaTalk","GLOBAL",13)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactSolaSerious","GLOBAL",1)
+    SetGlobal("P#KivanLove","GLOBAL",-10)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactSolaSerious","GLOBAL",1)
+  GlobalLT("SolaTalk","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactSolaSerious","GLOBAL",2)
+    IncrementGlobal("P#KivanLove","GLOBAL",5)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactTsujLight","GLOBAL",0)
+  Global("TsujathaRomanceActive","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactTsujLight","GLOBAL",1)
+    IncrementGlobal("P#KivanLove","GLOBAL",-3)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactTsujLight","GLOBAL",1)
+  Global("TsujathaRomanceActive","GLOBAL",3)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactTsujLight","GLOBAL",2)
+    IncrementGlobal("P#KivanLove","GLOBAL",3)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactTsujSerious","GLOBAL",0)
+  Global("TsujathaRomanceActive","GLOBAL",2)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactTsujSerious","GLOBAL",1)
+    SetGlobal("P#KivanLove","GLOBAL",-10)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactTsujSerious","GLOBAL",1)
+  Global("TsujathaRomanceActive","GLOBAL",3)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactTsujSerious","GLOBAL",2)
+    IncrementGlobal("P#KivanLove","GLOBAL",5)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactChloeLight","GLOBAL",0)
+  Global("ChloeRomanceActiveCR","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactChloeLight","GLOBAL",1)
+    IncrementGlobal("P#KivanLove","GLOBAL",-3)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactChloeLight","GLOBAL",1)
+  Global("ChloeRomanceActiveCR","GLOBAL",3)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactChloeLight","GLOBAL",2)
+    IncrementGlobal("P#KivanLove","GLOBAL",3)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactChloeSerious","GLOBAL",0)
+  Global("ChloeRomanceActiveCR","GLOBAL",2)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactChloeSerious","GLOBAL",1)
+    SetGlobal("P#KivanLove","GLOBAL",-10)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactChloeSerious","GLOBAL",1)
+  Global("ChloeRomanceActiveCR","GLOBAL",3)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactChloeSerious","GLOBAL",2)
+    IncrementGlobal("P#KivanLove","GLOBAL",5)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactValyLight","GLOBAL",0)
+  Global("H#ValygarRomanceActive","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactValyLight","GLOBAL",1)
+    IncrementGlobal("P#KivanLove","GLOBAL",-3)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactValyLight","GLOBAL",1)
+  Global("H#ValygarRomanceActive","GLOBAL",3)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactValyLight","GLOBAL",2)
+    IncrementGlobal("P#KivanLove","GLOBAL",3)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactValySerious","GLOBAL",0)
+  Global("H#ValygarRomanceActive","GLOBAL",2)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactValySerious","GLOBAL",1)
+    SetGlobal("P#KivanLove","GLOBAL",-10)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactValySerious","GLOBAL",1)
+  Global("H#ValygarRomanceActive","GLOBAL",3)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactValySerious","GLOBAL",2)
+    IncrementGlobal("P#KivanLove","GLOBAL",5)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactImoenLight","GLOBAL",0)
+  Global("ImoenRomanceActive","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactImoenLight","GLOBAL",1)
+    IncrementGlobal("P#KivanLove","GLOBAL",-3)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactImoenLight","GLOBAL",1)
+  Global("ImoenRomanceActive","GLOBAL",3)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactImoenLight","GLOBAL",2)
+    IncrementGlobal("P#KivanLove","GLOBAL",3)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactImoenSerious","GLOBAL",0)
+  Global("ImoenRomanceActive","GLOBAL",2)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactImoenSerious","GLOBAL",1)
+    SetGlobal("P#KivanLove","GLOBAL",-10)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactImoenSerious","GLOBAL",1)
+  Global("ImoenRomanceActive","GLOBAL",3)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactImoenSerious","GLOBAL",2)
+    IncrementGlobal("P#KivanLove","GLOBAL",5)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactEdwinLight","GLOBAL",0)
+  Global("EdwinRomanceActive","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactEdwinLight","GLOBAL",1)
+    IncrementGlobal("P#KivanLove","GLOBAL",-3)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactEdwinLight","GLOBAL",1)
+  Global("EdwinRomanceActive","GLOBAL",3)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactEdwinLight","GLOBAL",2)
+    IncrementGlobal("P#KivanLove","GLOBAL",3)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactEdwinSerious","GLOBAL",0)
+  Global("EdwinRomanceActive","GLOBAL",2)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactEdwinSerious","GLOBAL",1)
+    SetGlobal("P#KivanLove","GLOBAL",-10)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactEdwinSerious","GLOBAL",1)
+  Global("EdwinRomanceActive","GLOBAL",3)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactEdwinSerious","GLOBAL",2)
+    IncrementGlobal("P#KivanLove","GLOBAL",5)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactXanLight","GLOBAL",0)
+  Global("O#XanRomanceActive","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactXanLight","GLOBAL",1)
+    IncrementGlobal("P#KivanLove","GLOBAL",-3)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactXanLight","GLOBAL",1)
+  Global("O#XanRomanceActive","GLOBAL",3)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactXanLight","GLOBAL",2)
+    IncrementGlobal("P#KivanLove","GLOBAL",3)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactXanSerious","GLOBAL",0)
+  Global("O#XanRomanceActive","GLOBAL",2)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactXanSerious","GLOBAL",1)
+    SetGlobal("P#KivanLove","GLOBAL",-10)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ReactXanSerious","GLOBAL",1)
+  Global("O#XanRomanceActive","GLOBAL",3)
+THEN
+  RESPONSE #100
+    SetGlobal("P#ReactXanSerious","GLOBAL",2)
+    IncrementGlobal("P#KivanLove","GLOBAL",5)
+END
+
+IF
+  InParty(Myself)
+  Global("P#ToBSwitch","GLOBAL",0)
+  OR(2)
+    AreaCheck("AR4000")
+    GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)
+THEN
+  RESPONSE #100
+    ChangeAIScript("P#KI25",OVERRIDE)
+    SetGlobal("P#ToBSwitch","GLOBAL",1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  !AreaCheck("AR0700")
+  Global("P#KivanAcorns","GLOBAL",0)
+  PartyHasItem("MISC4N") // Acorns
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("P#KiAcornTime","GLOBAL",3600)
+    PlaySong(0)
+    PlaySound("kivan000")
+    SetGlobal("P#KivanAcorns","GLOBAL",1)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  CombatCounter(0)
+  !See([ENEMY])
+  RealGlobalTimerExpired("P#KiAcornTime","GLOBAL")
+  Global("P#KivanAcorns","GLOBAL",2)
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("P#KiAcornTime","GLOBAL",3600)
+    IncrementGlobal("P#KivanAcorns","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan000")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  CombatCounter(0)
+  !See([ENEMY])
+  Global("P#IrenicusEyes","LOCALS",1)
+  RealGlobalTimerExpired("P#KiAcornTime","GLOBAL")
+  Global("P#KivanAcorns","GLOBAL",4)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("P#KiAcornTime","GLOBAL",3600)
+    IncrementGlobal("P#KivanAcorns","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan000")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  Global("frLeaveDryads","ar1200",1)
+  Global("P#KivanAcornsDriad","GLOBAL",0)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#KivanAcornsDriad","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan000")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  AreaCheck("AR0900")
+  Global("P#GaalSpoke","GLOBAL",1)
+  Global("P#KivanUEQ","GLOBAL",0)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("P#KiUETime","GLOBAL",30)
+    SetGlobal("P#KivanUEQ","GLOBAL",1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  CombatCounter(0)
+  !See([ENEMY])
+  RealGlobalTimerExpired("P#KiUETime","GLOBAL")
+  Global("P#KivanUEQ","GLOBAL",1)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#KivanUEQ","GLOBAL",1)
+    RealSetGlobalTimer("P#ShevarashTime","GLOBAL",1800)
+    PlaySong(0)
+    PlaySound("kivan000")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  OR(3)
+    Global("P#DeherianaDead","GLOBAL",1)
+    Global("P#DeherianaLives","GLOBAL",0)
+    Global("P#DeherianaLives","GLOBAL",3)
+  Global("P#Shevarash","GLOBAL",1)
+  RealGlobalTimerExpired("P#ShevarashTime","GLOBAL")
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#Shevarash","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan000")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  !Global("P#NoticedSalvanas1","GLOBAL",1)
+  Global("P#NoticedSalvanas","GLOBAL",1)
+  Gender(Player1,FEMALE)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#NoticedSalvanas","GLOBAL",1)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  AreaCheck("AR0203")
+  Dead("riftcr04")
+  Global("P#MercyTalkTimer","GLOBAL",0)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#MercyTalkTimer","GLOBAL",1)
+    RealSetGlobalTimer("P#MercyTalkTimerSet","GLOBAL",100)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  RealGlobalTimerExpired("P#MercyTalkTimerSet","GLOBAL")
+  Dead("riftcr04")
+  Global("P#MercyTalk","GLOBAL",0)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#MercyTalk","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan000")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  AreaCheck("AR1203")
+  Dead("firkra02")
+  Global("P#KivanKilledDragon","GLOBAL",0)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#KivanKilledDragon","GLOBAL",1)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  AreaCheck("AR1202")
+  Dead("tazok")
+  Global("P#TazokTalk","GLOBAL",0)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#TazokTalk","GLOBAL",1)
+    RealSetGlobalTimer("P#TazokTime","GLOBAL",1800)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  Global("P#KivanTazokHeart","GLOBAL",1)
+  RealGlobalTimerExpired("P#TazokTime","GLOBAL")
+  OR(3)
+    Global("P#TazokTalk","GLOBAL",2)
+    Global("P#TazokTalk","GLOBAL",4)
+    Global("P#TazokTalk","GLOBAL",6)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#TazokTalk","GLOBAL",1)
+    RealSetGlobalTimer("P#TazokTime","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan00")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  RealGlobalTimerExpired("P#TazokTime","GLOBAL")
+  OR(3)
+    Global("P#TazokTalk","GLOBAL",3)
+    Global("P#TazokTalk","GLOBAL",5)
+    Global("P#TazokTalk","GLOBAL",7)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#TazokTalk","GLOBAL",1)
+    RealSetGlobalTimer("P#TazokTime","GLOBAL",1800)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  Global("P#KivanConstitutionTazok","GLOBAL",0)
+  Global("P#KivanConstitutionDrain","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("P#KivanConstitutionTazok","GLOBAL",1)
+    AddXPObject("P#Kivan",5000)
+    AddXPObject(Player1,5000)
+    ReallyForceSpellRES("P#WISH04","P#KIVAN") // No such index
+    ReallyForceSpellRES("P#WISH04","P#KIVAN") // No such index
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  Global("P#KivanConstitutionTazok","GLOBAL",0)
+  Global("P#KivanConstitutionDrain","GLOBAL",2)
+THEN
+  RESPONSE #100
+    AddXPObject("P#Kivan",2500)
+    SetGlobal("P#KivanConstitutionTazok","GLOBAL",1)
+    ReallyForceSpellRES("P#WISH04","P#KIVAN") // No such index
+    ReallyForceSpellRES("P#WISH04","P#KIVAN") // No such index
+    ReallyForceSpellRES("P#WISH04","P#KIVAN") // No such index
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  Global("P#KivanConstitutionTazok","GLOBAL",0)
+  Global("P#KivanConstitutionDrain","GLOBAL",3)
+THEN
+  RESPONSE #100
+    AddXPObject("P#Kivan",1000)
+    SetGlobal("P#KivanConstitutionTazok","GLOBAL",1)
+    ReallyForceSpellRES("P#WISH04","P#KIVAN") // No such index
+    ReallyForceSpellRES("P#WISH04","P#KIVAN") // No such index
+    ReallyForceSpellRES("P#WISH04","P#KIVAN") // No such index
+    ReallyForceSpellRES("P#WISH04","P#KIVAN") // No such index
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  AreaCheck("AR1901")
+  Dead("cefald01")
+  Global("GrovePoisoned","GLOBAL",0)
+  Global("NonEvilPath","AR1901",1)
+  Global("P#KivanGroveSaved","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("P#KivanGroveSaved","GLOBAL",1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  AreaCheck("AR1900")
+  Global("P#KivanGroveSaved","GLOBAL",1)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#KivanGroveSaved","GLOBAL",1)
+    RealSetGlobalTimer("P#FaldornTime","GLOBAL",3600)
+    PlaySong(0)
+    PlaySound("kivan000")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  RealGlobalTimerExpired("P#FaldornTime","GLOBAL")
+  Global("P#FaldornTalk","GLOBAL",1)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#FaldornTalk","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan000")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  AreaCheck("AR0516")
+  Global("P#KivanPlanar","GLOBAL",0)
+  Dead("pmaster")
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#KivanPlanar","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan000")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  Global("P#DeherianaAphrilTalk","GLOBAL",0)
+  Global("P#KivanSeesAphril","GLOBAL",0)
+  AreaCheck("AR1515")
+  See("ppaphril")
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#KivanSeesAphril","GLOBAL",1)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  OR(4)
+    PartyHasItem("MISCAO") // Mind Flayer Painting
+    PartyHasItem("MISCAP") // Umber Hulk Painting
+    PartyHasItem("MISCAQ") // Troll Painting
+    PartyHasItem("MISCAR") // Djinni Painting
+  Global("P#KivanPortrait","GLOBAL",0)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#KivanPortrait","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan00")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  Global("SahauginTravel","GLOBAL",1)
+  AreaCheck("AR2100")
+  Global("P#KivanUnderdarkEntry","GLOBAL",0)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#KivanUnderdarkEntry","GLOBAL",1)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  AreaCheck("AR2200")
+  RealGlobalTimerExpired("P#KivanSpeakUstNatha","GLOBAL")
+  Global("P#KivanUst","GLOBAL",0)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#KivanUst","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan000")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  Global("udDrowPlot","GLOBAL",100)
+  AreaCheck("AR2402")
+  Global("P#KivanDrowReversal","GLOBAL",0)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#KivanDrowReversal","GLOBAL",1)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  AreaCheck("AR0800")
+  Global("P#BodhiDead","GLOBAL",0)
+  Dead("c6bodhi")
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#BodhiDead","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan00")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  Global("P#EnteredAR0411","GLOBAL",0)
+  AreaCheck("AR0411")
+THEN
+  RESPONSE #100
+    SetGlobal("P#EnteredAR0411","GLOBAL",1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  AreaCheck("AR0400")
+  Global("P#LavokDeadTimer","GLOBAL",0)
+  GlobalLT("Chapter","GLOBAL",%bg2_chapter_5%)
+  Race(Player1,HUMAN)
+  OR(2)
+    Dead("lavok")
+    Dead("lavok02")
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#LavokDeadTimer","GLOBAL",1)
+    RealSetGlobalTimer("P#KivanSpeakLavok","GLOBAL",200)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  Global("P#LavokDead","GLOBAL",0)
+  Race(Player1,HUMAN)
+  RealGlobalTimerExpired("P#KivanSpeakLavok","GLOBAL")
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#LavokDead","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan000")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalGT("ElvenSpirits","GLOBAL",0)
+  AreaCheck("AR2800")
+  Global("P#KivanSulLiberated","GLOBAL",0)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#KivanSulLiberated","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan00")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  OR(2)
+    AreaCheck("AR1400")
+    AreaCheck("AR1404")
+  Dead("uhrang01")
+  Global("P#KivanRanger","GLOBAL",0)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#KivanRanger","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan000")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  OR(3)
+    AreaCheck("AR1700")
+    AreaCheck("AR1800")
+    AreaCheck("AR2600")
+  GlobalGT("Chapter","GLOBAL",%bg2_chapter_4%)
+  Global("P#KivanTethir","GLOBAL",0)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#KivanTethir","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan00")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  AreaCheck("AR0404")
+  Global("P#RiddleSewer","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("P#RiddleSewer","GLOBAL",1)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  AreaCheck("AR0404")
+  Global("P#HandSewer","GLOBAL",0)
+  PartyHasItem("MISC5S") // Hand
+THEN
+  RESPONSE #100
+    SetGlobal("P#HandSewer","GLOBAL",1)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  AreaCheck("AR0404")
+  Global("P#LoverRing","GLOBAL",0)
+  PartyHasItem("MISC5R") // The Lover's Ring
+THEN
+  RESPONSE #100
+    SetGlobal("P#LoverRing","GLOBAL",1)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  AreaCheck("AR0404")
+  Global("P#LoverRing","GLOBAL",2)
+  Global("P#KivanLoversQuest","GLOBAL",1)
+  PartyHasItem("SW2H14") // Lilarcor
+THEN
+  RESPONSE #100
+    SetGlobal("P#LoverRing","GLOBAL",3)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",6)
+  AreaCheck("AR1401")
+  PartyHasItem("misc6p") // Shadow Dragon Wardstone
+  PartyHasItem("KEY05") // Dawn's Light Symbol
+  Global("P#KivanAmuana","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("P#KivanAmuana","GLOBAL",1)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  Global("P#KivanLassal","GLOBAL",0)
+  Global("P#LassalCurse","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("P#KivanLassal","GLOBAL",1)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",6)
+  AreaCheck("AR1102")
+  Global("P#KivanCabin","GLOBAL",0)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#KivanCabin","GLOBAL",1)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  AreaCheck("AR1302")
+  Global("P#KivanFlailOA","GLOBAL",1)
+  GlobalLT("P#KivanOffence","GLOBAL",6)
+  OR(3)
+    PartyHasItem("BLUN14I") // Flail of Ages
+    PartyHasItem("BLUN14H") // Flail of Ages
+    PartyHasItem("BLUN14G") // Flail of Ages
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#KivanFlailOA","GLOBAL",1)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  AreaCheck("AR1302")
+  Global("P#KivanDogStew","GLOBAL",0)
+  PartyHasItem("MISC7U") // Dog Stew
+  InParty("AERIE")
+  See("AERIE")
+  !StateCheck("AERIE",STATE_SLEEPING)
+  See("Aerie")
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#KivanDogStew","GLOBAL",1)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  AreaCheck("AR1303")
+  Global("P#KivanCoolBow","GLOBAL",0)
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  OR(2)
+    PartyHasItem("BOW12") // Elven Court Bow +3
+    PartyHasItem("GORWOM2") // Elven Court Bow +3
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#KivanCoolBow","GLOBAL",1)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",5)
+  Global("P#KivanElleDream","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("P#KivanElleDream","GLOBAL",2)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",3)
+  Global("P#RaelisArrested","GLOBAL",1)
+  GlobalLT("PlanarPrison","GLOBAL",2)
+  AreaCheck("AR0510")
+THEN
+  RESPONSE #100
+    SetGlobal("P#RaelisArrested","GLOBAL",2)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",5)
+  Global("P#KivanCenteol","GLOBAL",0)
+  Dead("sppain")
+  AreaCheck("AR0804")
+THEN
+  RESPONSE #100
+    SetGlobal("P#KivanCenteol","GLOBAL",1)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  AreaCheck("AR1201")
+  Global("P#KivanHaveNotSeenFL","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("P#KivanHaveNotSeenFL","GLOBAL",1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",5)
+  AreaCheck("AR1200")
+  PartyHasItem("MISC6U") // Firkraag's Challenge
+  OR(2)
+    Global("P#KivanHaveNotSeenFL","GLOBAL",0)
+    !Dead("tazok")
+  Global("P#FirkraagChallenge","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("P#FirkraagChallenge","GLOBAL",1)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  Global("P#HappinessTalkTimer","GLOBAL",0)
+  Global("P#DeherianaLives","GLOBAL",6)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#HappinessTalkTimer","GLOBAL",1)
+    RealSetGlobalTimer("P#KivanSpeakHappy","GLOBAL",600)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  Global("P#HappinessTalk","GLOBAL",0)
+  RealGlobalTimerExpired("P#KivanSpeakHappy","GLOBAL")
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#HappinessTalk","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan000")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  PartyHasItem("SW2H14") // Lilarcor
+  HasItemEquipedReal("SW2H14","P#KIVAN") // Lilarcor
+  Global("P#KivanLilarcorStart","GLOBAL",0)
+THEN
+  RESPONSE #100
+    CreateCreatureObject("P#LILCO","P#kivan",0,0,0)
+    Wait(1)
+    SetGlobal("P#KivanLilarcorStart","GLOBAL",1)
+    RealSetGlobalTimer("P#KivanLil","GLOBAL",3600)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  PartyHasItem("SW2H14") // Lilarcor
+  HasItemEquipedReal("SW2H14","P#KIVAN") // Lilarcor
+  RealGlobalTimerExpired("P#KivanLil","GLOBAL")
+  OR(4)
+    Global("P#KivanLilEquiped","GLOBAL",0)
+    Global("P#KivanLilEquiped","GLOBAL",2)
+    Global("P#KivanLilEquiped","GLOBAL",4)
+    Global("P#KivanLilEquiped","GLOBAL",6)
+THEN
+  RESPONSE #100
+    CreateCreatureObject("P#LILCO","P#kivan",0,0,0)
+    Wait(1)
+    RealSetGlobalTimer("P#KivanLil","GLOBAL",ONE_DAY)
+    IncrementGlobal("P#KivanLilEquiped","GLOBAL",1)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  Global("P#KivanRestBanter","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("P#KivanRestBanter","GLOBAL",1)
+    RealSetGlobalTimer("P#KivanRestTimer","GLOBAL",1800)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  InParty("KORGAN")
+  See("KORGAN")
+  !StateCheck("KORGAN",STATE_SLEEPING)
+  AreaCheck("AR1301")
+  Global("P#KorganCellar","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("P#KorganCellar","GLOBAL",1)
+    ActionOverride("korgan",StartDialogueNoSet("P#kivan"))
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  InParty("KORGAN")
+  See("KORGAN")
+  !StateCheck("KORGAN",STATE_SLEEPING)
+  AreaCheck("AR1301")
+  Global("P#KorganTor","GLOBAL",0)
+  Dead("TorGal")
+THEN
+  RESPONSE #100
+    SetGlobal("P#KorganTor","GLOBAL",1)
+    ActionOverride("korgan",StartDialogueNoSet("P#kivan"))
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  AreaCheck("AR1301")
+  Global("P#NaliaTorgalDies","GLOBAL",0)
+  Dead("TorGal")
+THEN
+  RESPONSE #100
+    SetGlobal("P#NaliaTorgalDies","GLOBAL",1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  InParty("EDWIN")
+  See("EDWIN")
+  !StateCheck("EDWIN",STATE_SLEEPING)
+  AreaCheck("AR1303")
+  See("kpgol04")
+  Global("P#EdwinGolem","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("P#EdwinGolem","GLOBAL",1)
+    ActionOverride("edwin",Dialogue("P#kivan"))
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  InParty("JAHEIRA")
+  See("JAHEIRA")
+  !StateCheck("Jaheira",STATE_SLEEPING)
+  AreaCheck("AR1900")
+  Dead("cefgt02")
+  Global("P#JaheiraSD","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("P#JaheiraSD","GLOBAL",1)
+    StartDialogueNoSet("jaheira")
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  InParty("aerie")
+  See("aerie")
+  !StateCheck("aerie",STATE_SLEEPING)
+  Global("udleaveGnome","AR2100",1)
+  AreaCheck("AR2100")
+  Global("P#KIAerieUD","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("P#KIAerieUD","GLOBAL",1)
+    ActionOverride("aerie",StartDialogueNoSet("P#KIVAN"))
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  !Global("P#KivanRomanceInactive","GLOBAL",1)
+  Global("P#KivanRomanceActive","Global",1)
+  RealGlobalTimerExpired("P#KiDreamCatcherTime","GLOBAL")
+  Global("P#DreamCatcher","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("P#DreamCatcher","GLOBAL",1)
+    ActionOverride(Player1,DisplayStringHead(Player1,108003)) // You have enchanted a simple amulet to ward off bad dreams.
+    GiveItemCreate("P#DREAM",Player1,1,0,0)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  Global("P#KivanFriendStart","GLOBAL",0)
+  ReputationGT(Player1,10)
+THEN
+  RESPONSE #100
+    SetGlobal("P#KivanFriendStart","GLOBAL",1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  GlobalLT("P#DeherianaLives","GLOBAL",2)
+  GlobalLT("Chapter","GLOBAL",%bg2_chapter_5%)
+  Global("P#KivanFriendStart","GLOBAL",1)
+  Global("P#KiFriendTalk","GLOBAL",0)
+  Global("P#KivanFriend","GLOBAL",0)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("P#KiFriendTalkTime","GLOBAL",10)
+    SetGlobal("P#KiFriendTalk","GLOBAL",1)
+    SetGlobal("P#KivanFriend","GLOBAL",1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalLT("P#DeherianaLives","GLOBAL",2)
+  RealGlobalTimerExpired("P#KiFriendTalkTime","GLOBAL")
+  ReputationGT(Player1,11)
+  Global("P#KivanFriend","GLOBAL",1)
+  Global("P#KiOldFriend","GLOBAL",1)
+  AreaType(OUTDOOR)
+  !TimeOfDay(DAY)
+  OR(5)
+    Global("P#KiFriendTalk","GLOBAL",1)
+    Global("P#KiFriendTalk","GLOBAL",3)
+    Global("P#KiFriendTalk","GLOBAL",5)
+    Global("P#KiFriendTalk","GLOBAL",7)
+    Global("P#KiFriendTalk","GLOBAL",11)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("P#KiTalkTime","GLOBAL",1)
+    IncrementGlobal("P#KiFriendTalk","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan00")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  RealGlobalTimerExpired("P#KiTalkTime","GLOBAL")
+  OR(5)
+    Global("P#KiFriendTalk","GLOBAL",2)
+    Global("P#KiFriendTalk","GLOBAL",4)
+    Global("P#KiFriendTalk","GLOBAL",6)
+    Global("P#KiFriendTalk","GLOBAL",8)
+    Global("P#KiFriendTalk","GLOBAL",12)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("P#KiFriendTalkTime","GLOBAL",2700)
+    IncrementGlobal("P#KiFriendTalk","GLOBAL",1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  GlobalGT("Chapter","GLOBAL",1)
+  Global("P#KivanCatch","GLOBAL",0)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("P#KiCatchTalkTime","GLOBAL",600)
+    SetGlobal("P#KivanCatch","GLOBAL",1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  GlobalGT("Chapter","GLOBAL",1)
+  GlobalLT("Chapter","GLOBAL",%bg2_chapter_4%)
+  RealGlobalTimerExpired("P#KiCatchTalkTime","GLOBAL")
+  !AreaType(DUNGEON)
+  TimeOfDay(DAY)
+  OR(5)
+    Global("P#KivanCatch","GLOBAL",1)
+    Global("P#KivanCatch","GLOBAL",3)
+    Global("P#KivanCatch","GLOBAL",5)
+    Global("P#KivanCatch","GLOBAL",7)
+    Global("P#KivanCatch","GLOBAL",9)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("P#KiCatchTalkTime","GLOBAL",1)
+    IncrementGlobal("P#KivanCatch","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan00")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  RealGlobalTimerExpired("P#KiCatchTalkTime","GLOBAL")
+  OR(5)
+    Global("P#KivanCatch","GLOBAL",2)
+    Global("P#KivanCatch","GLOBAL",4)
+    Global("P#KivanCatch","GLOBAL",6)
+    Global("P#KivanCatch","GLOBAL",8)
+    Global("P#KivanCatch","GLOBAL",10)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("P#KiCatchTalkTime","GLOBAL",2700)
+    IncrementGlobal("P#KivanCatch","GLOBAL",1)
+END
+
+IF
+  Global("P#KivanMatch","GLOBAL",0)
+  GlobalGT("P#KivanLove","GLOBAL",3)
+  Global("P#CheckKivanMatch","GLOBAL",0)
+  Global("P#DeherianaDead","GLOBAL",1)
+  Gender(Player1,FEMALE)
+  !Alignment(Player1,LAWFUL_EVIL)
+  Global("P#KivanRomanceActive","Global",0)
+  ReputationGT(Player1,11)
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+THEN
+  RESPONSE #100
+    SetGlobal("P#KivanRomanceActive","Global",1)
+    SetGlobal("P#KivanMatch","GLOBAL",1)
+    SetGlobal("P#CheckKivanMatch","GLOBAL",1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  GlobalGT("Chapter","GLOBAL",%bg2_chapter_5%)
+  Global("P#KivanFriendStart","GLOBAL",1)
+  OR(2)
+    GlobalGT("P#KiFriendTalk","GLOBAL",9)
+    Global("P#KiOldFriend","GLOBAL",0)
+  Global("P#KivanMatch","GLOBAL",1)
+  Global("P#DeherianaDead","GLOBAL",1)
+  Global("P#KivanLoveTalk","GLOBAL",0)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("P#KiLoveTalkTime","GLOBAL",360)
+    SetGlobal("P#KivanLoveTalk","GLOBAL",1)
+    SetGlobal("P#KivanFriend","GLOBAL",2)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  RealGlobalTimerExpired("P#KiLoveTalkTime","GLOBAL")
+  ReputationGT(Player1,11)
+  AreaType(OUTDOOR)
+  PartyRested()
+  Global("P#KivanLoveTalk","GLOBAL",5)
+  !Global("P#KivanRomanceInactive","GLOBAL",1)
+  Global("P#KivanRomanceActive","GLOBAL",1)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("P#KiLovelyTalkTime","GLOBAL",1)
+    IncrementGlobal("P#KivanLoveTalk","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan00")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  RealGlobalTimerExpired("P#KiLovelyTalkTime","GLOBAL")
+  OR(3)
+    Global("P#KivanLoveTalk","GLOBAL",2)
+    Global("P#KivanLoveTalk","GLOBAL",4)
+    Global("P#KivanLoveTalk","GLOBAL",6)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("P#KiLoveTalkTime","GLOBAL",180)
+    IncrementGlobal("P#KivanLoveTalk","GLOBAL",1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  GlobalGT("Chapter","GLOBAL",%bg2_chapter_5%)
+  Global("P#KivanMatch","GLOBAL",1)
+  Global("P#DeherianaDead","GLOBAL",1)
+  Global("P#KivanSweetTalk","GLOBAL",0)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("P#KiSweetTalkTime","GLOBAL",300)
+    SetGlobal("P#KivanSweetTalk","GLOBAL",1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  RealGlobalTimerExpired("P#KiSweetTalkTime","GLOBAL")
+  ReputationGT(Player1,11)
+  Global("P#KivanMatch","GLOBAL",1)
+  !Global("P#KivanRomanceInactive","GLOBAL",1)
+  Global("P#KivanRomanceActive","GLOBAL",1)
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  OR(4)
+    Global("P#KivanSweetTalk","GLOBAL",1)
+    Global("P#KivanSweetTalk","GLOBAL",3)
+    Global("P#KivanSweetTalk","GLOBAL",5)
+    Global("P#KivanSweetTalk","GLOBAL",7)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("P#KiSweetTalkTime","GLOBAL",1)
+    IncrementGlobal("P#KivanSweetTalk","GLOBAL",1)
+    IncrementGlobal("P#KivanLove","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan00")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  RealGlobalTimerExpired("P#KiSweetTalkTime","GLOBAL")
+  OR(5)
+    Global("P#KivanSweetTalk","GLOBAL",2)
+    Global("P#KivanSweetTalk","GLOBAL",4)
+    Global("P#KivanSweetTalk","GLOBAL",6)
+    Global("P#KivanSweetTalk","GLOBAL",8)
+    Global("P#KivanSweetTalk","GLOBAL",10)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("P#KiSweetTalkTime","GLOBAL",1800)
+    IncrementGlobal("P#KivanSweetTalk","GLOBAL",1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  RealGlobalTimerExpired("P#KiSweetTalkTime","GLOBAL")
+  ReputationGT(Player1,11)
+  Global("P#KivanMatch","GLOBAL",1)
+  !Global("P#KivanRomanceInactive","GLOBAL",1)
+  Global("P#KivanRomanceActive","GLOBAL",1)
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  PartyRested()
+  Global("P#KivanSweetTalk","GLOBAL",9)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("P#KiSweetTalkTime","GLOBAL",1)
+    IncrementGlobal("P#KivanSweetTalk","GLOBAL",1)
+    IncrementGlobal("P#KivanLove","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan00")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  Global("P#KivanRain","GLOBAL",1)
+  ReputationGT(Player1,11)
+  Global("P#KivanMatch","GLOBAL",1)
+  !Global("P#KivanRomanceInactive","GLOBAL",1)
+  Global("P#KivanRomanceActive","GLOBAL",1)
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  AreaType(OUTDOOR)
+  Global("P#KivanTimerForRain","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("P#KivanTimerForRain","GLOBAL",1)
+    RealSetGlobalTimer("P#KiVirga","GLOBAL",200)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  Global("P#KivanRain","GLOBAL",1)
+  RealGlobalTimerExpired("P#KiVirga","GLOBAL")
+  ReputationGT(Player1,11)
+  Global("P#KivanMatch","GLOBAL",1)
+  !Global("P#KivanRomanceInactive","GLOBAL",1)
+  Global("P#KivanRomanceActive","GLOBAL",1)
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  AreaType(OUTDOOR)
+  Global("P#KivanVirgaTalk","GLOBAL",0)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("P#KiVirga","GLOBAL",20)
+    IncrementGlobal("P#KivanVirgaTalk","GLOBAL",1)
+    Weather(RAIN)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  CombatCounter(0)
+  !See([ENEMY])
+  RealGlobalTimerExpired("P#KiVirga","GLOBAL")
+  ReputationGT(Player1,11)
+  Global("P#KivanMatch","GLOBAL",1)
+  !Global("P#KivanRomanceInactive","GLOBAL",1)
+  Global("P#KivanRomanceActive","GLOBAL",1)
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  AreaType(OUTDOOR)
+  Global("P#KivanVirgaTalk","GLOBAL",1)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#KivanVirgaTalk","GLOBAL",1)
+    IncrementGlobal("P#KivanLove","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan00")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  Global("P#KiWarmth","GLOBAL",1)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#KiWarmth","GLOBAL",1)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  Global("P#KiLace","GLOBAL",1)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#KiLace","GLOBAL",1)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  !See([ENEMY])
+  ReputationGT(Player1,11)
+  Global("P#KivanMatch","GLOBAL",1)
+  !Global("P#KivanRomanceInactive","GLOBAL",1)
+  Global("P#KivanRomanceActive","GLOBAL",1)
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  Global("P#KivanStars","GLOBAL",0)
+  TimeOfDay(NIGHT)
+  AreaType(OUTDOOR)
+  GlobalGT("P#KivanLoveTalk","GLOBAL",5)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("P#KiSweetTalkTime","GLOBAL",900)
+    IncrementGlobal("P#KivanStars","GLOBAL",1)
+    IncrementGlobal("P#KivanLove","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan00")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  !See([ENEMY])
+  ReputationGT(Player1,11)
+  Global("P#KivanMatch","GLOBAL",1)
+  !Global("P#KivanRomanceInactive","GLOBAL",1)
+  Global("P#KivanRomanceActive","GLOBAL",1)
+  GlobalLT("P#KivanOffence","GLOBAL",10)
+  Global("P#KivanDungeon","GLOBAL",0)
+  RealGlobalTimerExpired("P#KivanFlirtTimer","GLOBAL")
+  GlobalGT("P#KivanSweetTalk","GLOBAL",3)
+  AreaType(DUNGEON)
+  !AreaCheck("AR1515")
+  GlobalGT("P#KivanLoveTalk","GLOBAL",5)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("P#KiSweetTalkTime","GLOBAL",900)
+    IncrementGlobal("P#KivanDungeon","GLOBAL",1)
+    IncrementGlobal("P#KivanLove","GLOBAL",1)
+    PlaySong(0)
+    PlaySound("kivan00")
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty("P#kivan")
+  !Dead("P#kivan")
+  InMyArea("P#Kivan")
+  Global("P#SetDrowShout","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("P#SetDrowShout","LOCALS",1)
+    RealSetGlobalTimer("P#KivanDrowShoutTime","GLOBAL",60)
+END
+
+IF
+  OR(2)
+    Race(LastAttackerOf([GOODCUTOFF]),ELF)
+    AttackedBy([0.0.ELF],DEFAULT)
+  RealGlobalTimerExpired("P#KivanDrowShoutTime","GLOBAL")
+  OR(19)
+    AreaCheck("AR2100")
+    AreaCheck("AR2200")
+    AreaCheck("AR2101")
+    AreaCheck("AR2102")
+    AreaCheck("AR2103")
+    AreaCheck("AR2104")
+    AreaCheck("AR2105")
+    AreaCheck("AR2500")
+    AreaCheck("AR6100")
+    AreaCheck("AR6101")
+    AreaCheck("AR6102")
+    AreaCheck("AR6103")
+    AreaCheck("AR6104")
+    AreaCheck("AR6105")
+    AreaCheck("AR6106")
+    AreaCheck("AR6107")
+    AreaCheck("AR6108")
+    AreaCheck("AR6109")
+    AreaCheck("AR6110")
+THEN
+  RESPONSE #50
+    SetGlobal("P#Drow","LOCALS",1)
+    DisplayStringHead(Myself,108004) // Death to the Drow!
+    RealSetGlobalTimer("P#KivanDrowShoutTime","GLOBAL",60)
+    Shout(153)
+  RESPONSE #50
+    SetGlobal("P#Drow","LOCALS",1)
+    DisplayStringHead(Myself,108005) // In Shevarash name!
+    RealSetGlobalTimer("P#KivanDrowShoutTime","GLOBAL",60)
+    Shout(153)
+  RESPONSE #50
+    SetGlobal("P#Drow","LOCALS",1)
+    DisplayStringHead(Myself,108006) // Be damned, Lloth's spawn!
+    RealSetGlobalTimer("P#KivanDrowShoutTime","GLOBAL",60)
+    Shout(153)
+  RESPONSE #50
+    SetGlobal("P#Drow","LOCALS",1)
+    DisplayStringHead(Myself,108007) // For Shevarash!
+    RealSetGlobalTimer("P#KivanDrowShoutTime","GLOBAL",60)
+    Shout(153)
+  RESPONSE #50
+    SetGlobal("P#Drow","LOCALS",1)
+    DisplayStringHead(Myself,108008) // Doomed be the dark ones!
+    RealSetGlobalTimer("P#KivanDrowShoutTime","GLOBAL",60)
+    Shout(153)
+  RESPONSE #50
+    SetGlobal("P#Drow","LOCALS",1)
+    DisplayStringHead(Myself,108009) // Vengeance for our fallen!
+    RealSetGlobalTimer("P#KivanDrowShoutTime","GLOBAL",60)
+    Shout(153)
+END
+
+IF
+  InParty(Myself)
+  CombatCounter(0)
+  !See([ENEMY])
+  Global("P#KivanLoversQuest","GLOBAL",1)
+  PartyHasItem("MISC5R") // The Lover's Ring
+  !AreaCheck("AR0404")
+  !AreaType(DUNGEON)
+  GlobalLT("Chapter","GLOBAL",%bg2_chapter_4%)
+THEN
+  RESPONSE #100
+    IncrementGlobal("P#KivanLoversQuest","GLOBAL",1)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  InParty(Myself)
+  Global("P#KivanLoversQuest","GLOBAL",6)
+  Global("P#RingEntry1","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("P#RingEntry1","GLOBAL",1)
+    AddJournalEntry(@10003,QUEST_DONE)
+    EraseJournalEntry(@10001) // The Lover's Ring Kivan thinks that we should talk to the merchant of antiquities, Quataris,  in the Promenade about the Lover's Ring.
+END
+
+IF
+  InParty(Myself)
+  Global("P#KivanLoversQuest","GLOBAL",5)
+  Global("P#RingEntry2","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("P#RingEntry2","GLOBAL",1)
+    AddJournalEntry(@10000,QUEST)
+END
+
+IF
+  InParty(Myself)
+  Global("P#SummonChislav","GLOBAL",1)
+  Global("P#RingEntry3","GLOBAL",0)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("P#Chislav","GLOBAL",3000)
+    SetGlobal("P#RingEntry3","GLOBAL",1)
+    AddJournalEntry(@10002,QUEST)
+END
+
+IF
+  InParty(Myself)
+  GlobalGT("P#KivanLoversQuest","GLOBAL",5)
+  Global("P#RingEntry4","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("P#RingEntry4","GLOBAL",1)
+    EraseJournalEntry(@10001) // The Lover's Ring Kivan thinks that we should talk to the merchant of antiquities, Quataris,  in the Promenade about the Lover's Ring.
+    EraseJournalEntry(@10000) // The Lover's Ring Upon having his memory loss 'cured' by paying us less gold pieces than he intended, the merchant of antiquities in the Promenade recalled that the Jysstev family owned a ring similar to the one we found in the sewers. The Jysstevs, according to him, are old money. Perhaps, they'd pay me for bringing the news.
+    EraseJournalEntry(@10002) // The Lover's Ring Lady Jysstev was quite annoyed when I mentioned the Lover's Ring to her. Perhaps I should have talked to someone else. I will have to wait and see...
+END
+
+IF
+  InParty(Myself)
+  Global("P#SummonChislav","GLOBAL",1)
+  RealGlobalTimerExpired("P#Chislav","GLOBAL")
+  OR(7)
+    AreaCheck("AR0500")
+    AreaCheck("AR0400")
+    AreaCheck("AR0900")
+    AreaCheck("AR1000")
+    AreaCheck("AR0800")
+    AreaCheck("AR0700")
+    AreaCheck("AR0300")
+THEN
+  RESPONSE #100
+    SetGlobal("P#SummonChislav","GLOBAL",2)
+    CreateCreatureObject("P#CHISL","P#kivan",0,0,0)
+    Wait(1)
+    ActionOverride("chislav",Dialogue(Player1))
+END
+
+IF
+  InParty("P#Deher")
+  Global("P#DeherSoundset","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("P#DeherSoundset","GLOBAL",1)
+    SetPlayerSound(Myself,-1,SELECT_RARE1)
+END
+
+IF
+  !InParty("P#Deher")
+  Global("P#DeherSoundset","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("P#DeherSoundset","GLOBAL",0)
+    SetPlayerSound(Myself,@36,SELECT_RARE1)
+END

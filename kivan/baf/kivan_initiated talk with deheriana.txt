@@ -1,0 +1,10 @@
+//
+IF
+InParty(Myself)
+Global("P#DeherianaLives","GLOBAL",2)
+Global("P#DehWelcome","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#DehWelcome","GLOBAL",1)
+Interact(Player1)
+END

@@ -1,0 +1,198 @@
+IF
+  Global("P#FirstTimeHere","LOCALS",0)
+  !Range(Player1,10)
+THEN
+  RESPONSE #100
+    SetGlobal("P#FirstTimeHere","LOCALS",1)
+    ActionOverride("p#kivan",MoveToObject(Player1))
+    Wait(1)
+    FaceObject(Player1)
+END
+
+IF
+  NumTimesTalkedTo(0)
+  Range(Player1,10)
+THEN
+  RESPONSE #100
+    SmallWait(10)
+    ActionOverride(Player1,FaceObject("p#kivan"))
+    SmallWait(10)
+    StartDialogueNoSet(Player1)
+END
+
+IF
+  OR(3)
+    AttackedBy([GOODCUTOFF],DEFAULT)
+    HitBy([GOODCUTOFF],CRUSHING)
+    HPPercentLT(Myself,100)
+  Global("P#KivanAttacked","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("P#KivanAttacked","LOCALS",1)
+END
+
+IF
+  Global("P#KivanAttacked","LOCALS",1)
+THEN
+  RESPONSE #100
+    DisplayStringHead(Myself,17101) // Hmm... finds that violence is unavoidable. Certainly to be expected in a creature such as you.
+    ReallyForceSpell(Myself,DRYAD_TELEPORT) // SPWI995.SPL (Dimension Door)
+END
+
+IF
+  Delay(10)
+  See(NearestEnemyOf(Myself))
+  !StateCheck(Myself,STATE_INVISIBLE)
+THEN
+  RESPONSE #100
+    Hide()
+    Continue()
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  HaveSpell(CLERIC_ARMOR_OF_FAITH) // SPPR111.SPL (Armor of Faith)
+  CheckStatGT(Myself,3,ARMORCLASS)
+  HPGT(LastSeenBy(Myself),20)
+THEN
+  RESPONSE #100
+    Spell(Myself,CLERIC_ARMOR_OF_FAITH) // SPPR111.SPL (Armor of Faith)
+    Continue()
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  HaveSpell(CLERIC_BLESS) // SPPR101.SPL (Bless)
+  HPGT(LastSeenBy(Myself),20)
+  !StateCheck(LastSeenBy(Myself),STATE_BLESS)
+THEN
+  RESPONSE #100
+    Spell(Myself,CLERIC_BLESS) // SPPR101.SPL (Bless)
+    Continue()
+END
+
+IF
+  OR(4)
+    StateCheck(Myself,STATE_PANIC)
+    SpellCast([ANYONE],WIZARD_HORROR) // SPWI205.SPL (Horror)
+    SpellCast([ANYONE],WIZARD_SPOOK) // SPWI125.SPL (Spook)
+    SpellCastPriest([ANYONE],CLERIC_CLOAK_OF_FEAR) // SPPR416.SPL (Cloak of Fear)
+  HaveSpell(CLERIC_REMOVE_FEAR) // SPPR108.SPL (Remove Fear)
+  See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+    Spell(Myself,CLERIC_REMOVE_FEAR) // SPPR108.SPL (Remove Fear)
+    Continue()
+END
+
+IF
+  See(NearestEnemyOfType([0.ANIMAL]))
+  HaveSpell(RANGER_CHARM_ANIMAL) // SPCL311.SPL (Charm Animal)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),RANGER_CHARM_ANIMAL) // SPCL311.SPL (Charm Animal)
+    Continue()
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  !StateCheck(Myself,STATE_HASTED)
+  HaveSpell(WIZARD_HASTE) // SPWI305.SPL (Haste)
+THEN
+  RESPONSE #100
+    Spell(Myself,WIZARD_HASTE) // SPWI305.SPL (Haste)
+    Continue()
+END
+
+IF
+  HitBy([ANYONE],MISSILE)
+  HaveSpell(WIZARD_PROTECTION_FROM_NORMAL_MISSILES) // SPWI311.SPL (Protection From Normal Missiles)
+  !HasImmunityEffects(Myself)
+THEN
+  RESPONSE #100
+    Spell(Myself,WIZARD_PROTECTION_FROM_NORMAL_MISSILES) // SPWI311.SPL (Protection From Normal Missiles)
+    Continue()
+END
+
+IF
+  HaveSpell(WIZARD_MINOR_SPELL_DEFLECTION) // SPWI318.SPL (Minor Spell Deflection)
+  OR(4)
+    See(NearestEnemyOfType([0.0.0.LONG_BOW]))
+    See(NearestEnemyOfType([0.0.0.CLERIC_ALL]))
+    See(NearestEnemyOfType([0.0.0.BARD_ALL]))
+    See(NearestEnemyOfType([0.0.0.DRUID_ALL]))
+  !HasBounceEffects(Myself)
+THEN
+  RESPONSE #100
+    Spell(Myself,WIZARD_MINOR_SPELL_DEFLECTION) // SPWI318.SPL (Minor Spell Deflection)
+    Continue()
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  !Range(LastSeenBy(Myself),20)
+  HaveSpell(CLERIC_ENTANGLE) // SPPR105.SPL (Entangle)
+  AreaType(OUTDOOR)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),CLERIC_ENTANGLE) // SPPR105.SPL (Entangle)
+    Continue()
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  HaveSpell(CLERIC_DOOM) // SPPR113.SPL (Doom)
+THEN
+  RESPONSE #50
+    Spell(LastSeenBy(Myself),CLERIC_DOOM) // SPPR113.SPL (Doom)
+    Continue()
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  HPPercentLT(Myself,30)
+  HaveSpell(CLERIC_CURE_MEDIUM_WOUNDS) // SPPR315.SPL (Cure Medium Wounds)
+THEN
+  RESPONSE #100
+    Spell(MostDamagedOf(Myself),CLERIC_CURE_MEDIUM_WOUNDS) // SPPR315.SPL (Cure Medium Wounds)
+END
+
+IF
+  HPPercentLT(Myself,60)
+  HaveSpell(CLERIC_CURE_LIGHT_WOUNDS) // SPPR103.SPL (Cure Light Wounds)
+THEN
+  RESPONSE #100
+    Spell(MostDamagedOf(Myself),CLERIC_CURE_LIGHT_WOUNDS) // SPPR103.SPL (Cure Light Wounds)
+END
+
+IF
+  AttackedBy([ANYONE],DEFAULT)
+  Range(LastAttackerOf(Myself),20)
+THEN
+  RESPONSE #100
+    EquipMostDamagingMelee()
+    AttackReevaluate(LastAttackerOf(Myself),30)
+    Continue()
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  Range(NearestEnemyOf(Myself),10)
+THEN
+  RESPONSE #100
+    EquipMostDamagingMelee()
+    AttackReevaluate(NearestEnemyOf(Myself),30)
+    Continue()
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  !Range(NearestEnemyOf(Myself),10)
+THEN
+  RESPONSE #100
+    EquipRanged()
+    AttackReevaluate(NearestEnemyOf(Myself),30)
+    Continue()
+END
+

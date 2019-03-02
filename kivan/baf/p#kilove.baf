@@ -1,0 +1,407 @@
+//Romance Breaker, Universal//
+
+IF
+Global("P#KivanRomanceActive","GLOBAL",1)
+Global("P#KivanRomanceInactive","GLOBAL",0)
+OR(2)
+GlobalLT("P#KivanLove","GLOBAL",3)
+GlobalGT("P#KivanOffence","GLOBAL",4)
+THEN
+RESPONSE #100
+SetGlobal("P#KivanRomanceActive","GLOBAL",0)
+SetGlobal("P#KivanRomanceInactive","GLOBAL",1)
+END
+
+//Romance Resumed, Universal//
+
+IF
+Global("P#KivanRomanceActive","GLOBAL",0)
+Global("P#KivanRomanceInactive","GLOBAL",1)
+GlobalGT("P#KivanLove","GLOBAL",5)
+!GlobalGT("P#KivanOffence","GLOBAL",4)
+THEN
+RESPONSE #100
+SetGlobal("P#KivanRomanceActive","GLOBAL",1)
+SetGlobal("P#KivanRomanceInactive","GLOBAL",0)
+END
+
+//Reaction to Anomen//
+
+IF
+InParty(Myself)
+Global("P#ReactAnomenLight","GLOBAL",0)
+Global("AnomenRomanceActive","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactAnomenLight","GLOBAL",1)
+IncrementGlobal("P#KivanLove","GLOBAL",-3)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactAnomenLight","GLOBAL",1)
+Global("AnomenRomanceActive","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactAnomenLight","GLOBAL",2)
+IncrementGlobal("P#KivanLove","GLOBAL",3)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactAnomenSerious","GLOBAL",0)
+Global("AnomenRomanceActive","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactAnomenSerious","GLOBAL",1)
+SetGlobal("P#KivanLove","GLOBAL",-10)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactAnomenSerious","GLOBAL",1)
+Global("AnomenRomanceActive","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactAnomenSerious","GLOBAL",2)
+IncrementGlobal("P#KivanLove","GLOBAL",5)
+END
+
+//Reaction to Kelsey//
+
+IF
+InParty(Myself)
+Global("P#ReactKelseyLight","GLOBAL",0)
+Global("J#KelseyRomanceActive","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactKelseyLight","GLOBAL",1)
+IncrementGlobal("P#KivanLove","GLOBAL",-3)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactKelseyLight","GLOBAL",1)
+Global("J#KelseyRomanceActive","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactKelseyLight","GLOBAL",2)
+IncrementGlobal("P#KivanLove","GLOBAL",3)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactKelseySerious","GLOBAL",0)
+Global("J#KelseyRomanceActive","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactKelseySerious","GLOBAL",1)
+SetGlobal("P#KivanLove","GLOBAL",-10)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactKelseySerious","GLOBAL",1)
+Global("J#KelseyRomanceActive","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactKelseySerious","GLOBAL",2)
+IncrementGlobal("P#KivanLove","GLOBAL",5)
+END
+
+//Reaction to Solaufein//
+
+IF
+InParty(Myself)
+Global("P#ReactSolaLight","GLOBAL",0)
+GlobalGT("SolaTalk","GLOBAL",1)
+GlobalLT("SolaTalk","GLOBAL",15)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactSolaLight","GLOBAL",1)
+IncrementGlobal("P#KivanLove","GLOBAL",-3)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactSolaLight","GLOBAL",1)
+Global("SolaTalk","GLOBAL",-1)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactSolaLight","GLOBAL",2)
+IncrementGlobal("P#KivanLove","GLOBAL",3)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactSolaSerious","GLOBAL",0)
+GlobalGT("SolaTalk","GLOBAL",13)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactSolaSerious","GLOBAL",1)
+SetGlobal("P#KivanLove","GLOBAL",-10)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactSolaSerious","GLOBAL",1)
+GlobalLT("SolaTalk","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactSolaSerious","GLOBAL",2)
+IncrementGlobal("P#KivanLove","GLOBAL",5)
+END
+
+//Reaction to Tsujatha//
+
+IF
+InParty(Myself)
+Global("P#ReactTsujLight","GLOBAL",0)
+Global("TsujathaRomanceActive","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactTsujLight","GLOBAL",1)
+IncrementGlobal("P#KivanLove","GLOBAL",-3)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactTsujLight","GLOBAL",1)
+Global("TsujathaRomanceActive","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactTsujLight","GLOBAL",2)
+IncrementGlobal("P#KivanLove","GLOBAL",3)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactTsujSerious","GLOBAL",0)
+Global("TsujathaRomanceActive","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactTsujSerious","GLOBAL",1)
+SetGlobal("P#KivanLove","GLOBAL",-10)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactTsujSerious","GLOBAL",1)
+Global("TsujathaRomanceActive","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactTsujSerious","GLOBAL",2)
+IncrementGlobal("P#KivanLove","GLOBAL",5)
+END
+
+//Reaction to Chloe//
+
+IF
+InParty(Myself)
+Global("P#ReactChloeLight","GLOBAL",0)
+Global("ChloeRomanceActiveCR","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactChloeLight","GLOBAL",1)
+IncrementGlobal("P#KivanLove","GLOBAL",-3)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactChloeLight","GLOBAL",1)
+Global("ChloeRomanceActiveCR","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactChloeLight","GLOBAL",2)
+IncrementGlobal("P#KivanLove","GLOBAL",3)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactChloeSerious","GLOBAL",0)
+Global("ChloeRomanceActiveCR","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactChloeSerious","GLOBAL",1)
+SetGlobal("P#KivanLove","GLOBAL",-10)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactChloeSerious","GLOBAL",1)
+Global("ChloeRomanceActiveCR","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactChloeSerious","GLOBAL",2)
+IncrementGlobal("P#KivanLove","GLOBAL",5)
+END
+
+//Reaction to Valygar//
+
+IF
+InParty(Myself)
+Global("P#ReactValyLight","GLOBAL",0)
+Global("H#ValygarRomanceActive","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactValyLight","GLOBAL",1)
+IncrementGlobal("P#KivanLove","GLOBAL",-3)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactValyLight","GLOBAL",1)
+Global("H#ValygarRomanceActive","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactValyLight","GLOBAL",2)
+IncrementGlobal("P#KivanLove","GLOBAL",3)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactValySerious","GLOBAL",0)
+Global("H#ValygarRomanceActive","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactValySerious","GLOBAL",1)
+SetGlobal("P#KivanLove","GLOBAL",-10)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactValySerious","GLOBAL",1)
+Global("H#ValygarRomanceActive","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactValySerious","GLOBAL",2)
+IncrementGlobal("P#KivanLove","GLOBAL",5)
+END
+
+//Reaction to Imoen//
+
+IF
+InParty(Myself)
+Global("P#ReactImoenLight","GLOBAL",0)
+Global("ImoenRomanceActive","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactImoenLight","GLOBAL",1)
+IncrementGlobal("P#KivanLove","GLOBAL",-3)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactImoenLight","GLOBAL",1)
+Global("ImoenRomanceActive","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactImoenLight","GLOBAL",2)
+IncrementGlobal("P#KivanLove","GLOBAL",3)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactImoenSerious","GLOBAL",0)
+Global("ImoenRomanceActive","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactImoenSerious","GLOBAL",1)
+SetGlobal("P#KivanLove","GLOBAL",-10)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactImoenSerious","GLOBAL",1)
+Global("ImoenRomanceActive","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactImoenSerious","GLOBAL",2)
+IncrementGlobal("P#KivanLove","GLOBAL",5)
+END
+
+//Reaction to Edwin//
+
+IF
+InParty(Myself)
+Global("P#ReactEdwinLight","GLOBAL",0)
+Global("EdwinRomanceActive","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactEdwinLight","GLOBAL",1)
+IncrementGlobal("P#KivanLove","GLOBAL",-3)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactEdwinLight","GLOBAL",1)
+Global("EdwinRomanceActive","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactEdwinLight","GLOBAL",2)
+IncrementGlobal("P#KivanLove","GLOBAL",3)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactEdwinSerious","GLOBAL",0)
+Global("EdwinRomanceActive","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactEdwinSerious","GLOBAL",1)
+SetGlobal("P#KivanLove","GLOBAL",-10)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactEdwinSerious","GLOBAL",1)
+Global("EdwinRomanceActive","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactEdwinSerious","GLOBAL",2)
+IncrementGlobal("P#KivanLove","GLOBAL",5)
+END
+
+//Reaction to Xan//
+
+IF
+InParty(Myself)
+Global("P#ReactXanLight","GLOBAL",0)
+Global("O#XanRomanceActive","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactXanLight","GLOBAL",1)
+IncrementGlobal("P#KivanLove","GLOBAL",-3)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactXanLight","GLOBAL",1)
+Global("O#XanRomanceActive","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactXanLight","GLOBAL",2)
+IncrementGlobal("P#KivanLove","GLOBAL",3)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactXanSerious","GLOBAL",0)
+Global("O#XanRomanceActive","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactXanSerious","GLOBAL",1)
+SetGlobal("P#KivanLove","GLOBAL",-10)
+END
+
+IF
+InParty(Myself)
+Global("P#ReactXanSerious","GLOBAL",1)
+Global("O#XanRomanceActive","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#ReactXanSerious","GLOBAL",2)
+IncrementGlobal("P#KivanLove","GLOBAL",5)
+END
+
+

@@ -1,0 +1,64 @@
+//Summon Jozzi//
+
+IF
+Global("sahkngjob","GLOBAL",1)
+InParty("P#Kivan")
+!Dead("P#kivan")
+!StateCheck("P#kivan",STATE_SLEEPING)
+PartyHasItem("MISC8Q")
+!Exists("seasnake")
+Global("SeasnakeExists","Global",0)
+Global("P#TalkedToSnake","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("SeasnakeExists","Global",1)
+CreateCreature("P#SEASN",[795.326],3)
+ActionOverride("seasnake",MoveToObject(Player1))
+ActionOverride("seasnake",StartDialogueNoSet(Player1))
+END
+
+IF
+Global("P#BetrayMalenti","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#BetrayMalenti","GLOBAL",2)
+ActionOverride("seasnake",ApplySpell(Myself,DRYAD_TELEPORT))
+SetGlobal("hostilecity","GLOBAL",1)
+END
+
+IF
+Global("P#MalentiWaits","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#MalentiWaits","GLOBAL",2)
+ActionOverride("seasnake",ApplySpell(Myself,DRYAD_TELEPORT))
+END
+
+IF
+PartyHasItem("P#IHTIA")
+!Exists("seasnake")
+Global("Seasnake1Exists","Global",0)
+Global("P#MalentiWaits","GLOBAL",2)
+THEN
+RESPONSE #100
+CreateVisualEffect("SPFIREPI",[118.712])
+SmallWait(4)
+SetGlobal("P#MalentiWaits","GLOBAL",3)
+SetGlobal("Seasnake1Exists","Global",1)
+CreateCreature("P#SEAS1",[118.712],3)
+END
+
+IF
+PartyHasItem("P#IHTIA")
+Global("P#MalentiWaits","GLOBAL",3)
+CombatCounter(0) 
+PartyHasItem("Miscbi")
+GlobalGT("villynatyjob","GLOBAL",1)
+THEN
+RESPONSE #100
+ActionOverride("seasnake",MoveToObject(Player1))
+ActionOverride("seasnake",StartDialogueNoSet(Player1))
+END
+
+
+

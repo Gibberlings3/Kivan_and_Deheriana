@@ -1,0 +1,313 @@
+@0    = ~Kivan of Shilmista~
+
+@1    = ~Kivan~
+@2    = ~~
+@3    = ~Retreat, you fools, we have no hope to win.~ [KIVAN02]
+@4    = ~That was a noble deed.~ [KIVAN04]
+@5    = ~I don't agree with our party's course of action.~ [KIVAN05]
+@6    = ~I won't stand for such behavior again.~ [KIVAN06]
+@7    = ~I cannot allow this to go on. Defend yourselves.~ [KIVAN07]
+@8    = ~I will lead for as long as I am needed.~ [KIVAN08]
+@9    = ~It is time for us to rest.~ [KIVAN09]
+@10   = ~Oh please, we have tarried long enough.~ [KIVAN10]
+@11   = ~~ [KIVAN03]
+@12   = ~There is a time for talk, this is not such a time.~ [KIVAN23]
+@13   = ~My need for revenge gives me strength to go on.~ [KIVAN26]
+@14   = ~~ [KIVAN03]
+@15   = ~~ [KIVAN38]
+@16   = ~~ [KIVAN39]
+@17   = ~I don't know how much longer I can go on.~ [KIVAN11]
+@18   = ~~ [KIVAN12]
+@19   = ~The city is an example of man's excesses. I wish we would be gone from this miserable place.~ [KIVAN13]
+@20   = ~Why must we emulate the ways of the dwarven folk by crawling about these warrens?~ [KIVAN14]
+@21   = ~~ [KIVAN15]
+@22   = ~~ [KIVAN16]
+@23   = ~Yes?~ [KIVAN17]
+@24   = ~What do you want?~ [KIVAN18]
+@25   = ~Don't bother me.~ [KIVAN19]
+@26   = ~Yes?~ [KIVAN17]
+@27   = ~What do you want?~ [KIVAN18]
+@28   = ~Don't bother me.~ [KIVAN19]
+@29   = ~~ [KIVAN20]
+@30   = ~As you wish.~ [KIVAN21]
+@31   = ~Aye.~ [KIVAN22]
+@32   = ~~ [KIVAN20]
+@33   = ~As you wish.~ [KIVAN21]
+@34   = ~Aye.~ [KIVAN22]
+@35   = ~~ [KIVAN20]
+@36   = ~My soul aches for my lost Deheriana.~ [KIVAN24]
+@37   = ~We must not waste time on idle chatter.~ [KIVAN25]
+@38   = ~A solid hit!~
+@39   = ~A dangerous mistake!~
+@40   = ~My weapon has no effect!~
+@41   = ~I had to drop your item on the ground. I can carry no more.~
+@42   = ~I have secured something from them.~
+@43   = ~I'm out of sight of others.~
+@44   = ~My casting has been interrupted!~
+@45   = ~A snare has been set.~
+@46   = ~KIVAN is an elven ranger who hails from the Forest of Shadows - Shilmista in the elven tongue. You first met the somber elf near High Hedge while adventuring a year ago. At that time Kivan was seeking the murderer of his wife, Deheriana. This foul creature, Tazok, was a vassal of your half-brother and arch-enemy, Sarevok. After the decisive victory over Sarevok and his cronies, Kivan bade his farewell, intending to return to his native Shilmista. Kivan's longing for his wife did not diminish with the death of Tazok, and he was going to depart the Prime Material Plane to reunite with Deheriana in Arvanaith. However, upon learning of your mysterious disappearance, Kivan hurried back, hoping to find his trusted friend.~
+
+@47   = ~Deheriana~
+@48   = ~~ [P#DEH00]
+@49   = ~Rima ten'ta! (Run for it!)~ [P#DEH01]
+@50   = ~Lle naa belegohtar. (You are a mighty warrior.)~ [P#DEH02]
+@51   = ~Antolle ulua sulrim. (Much wind pours from your mouth.)~ [P#DEH03]
+@52   = ~Lle holma ve' edan. (You smell like a human.)~ [P#DEH04]
+@53   = ~Auta miqula orqu. (Go kiss an orc.)~ [P#DEH05]
+@54   = ~Mae govannen! (Well met!)~ [P#DEH06]
+@55   = ~Amin anta est. (I need to rest.)~ [P#DEH07]
+@56   = ~Lle merna aut? (Shall we go?)~ [P#DEH08]
+@57   = ~I'narr en gothrim glinuva nuin I'anor. (The bones of our foes will gleam under the sun.)~ [P#DEH09]
+@58   = ~Cuamin linduva yassen megrille! (My bow shall sing with your sword!)~ [P#DEH10]
+@59   = ~Amin khiluva lle a' gurtha ar' thar! (I will follow you to death and beyond!)~ [P#DEH11]
+@60   = ~Nadorhuanrim! (Cowardly dogs!)~ [P#DEH12]
+@61   = ~Tua amin! (Help me!)~ [P#DEH13]
+@62   = ~Cormamin niuve tenna' ta elea lle au, Kivan. (My heart shall weep until it sees thee again, Kivan.)~ [P#DEH14]
+@63   = ~Tanya awra! (That hurt!)~ [P#DEH15]
+@64   = ~Aa' lasser coia orn n' omenta gurtha... (May the leaves of the trees never turn brown... )~ [P#DEH16]
+@65   = ~Malia ten' yulna? (Care for a drink?)~ [P#DEH17]
+@66   = ~Ta naa feuyaer sinome. (It's disgusting here.)~ [P#DEH18]
+@67   = ~Cormamin lindua ele I'anor. (My heart sings to see the sun.)~ [P#DEH19]
+@68   = ~Elen sila lumen. (A star shall shine.)~ [P#DEH20]
+@69   = ~Uuma ma' ten' rashwe, ta tuluva a' lle. (Don't look for trouble, it will come to you.)~ [P#DEH21]
+@70   = ~Quel marth! (Good luck!)~ [P#DEH22]
+@71   = ~Tanya nae n'quel. (That was not good.)~ [P#DEH23]
+@72   = ~Amin naa lle nai! (I am yours to command!)~ [P#DEH24]
+@73   = ~Lle anta amin tu? (Do you need help?)~ [P#DEH25]
+@74   = ~Amin uuma malia. (I don't care.)~ [P#DEH26]
+@75   = ~Amin weera yassen lle. (I agree with you.)~ [P#DEH27]
+@76   = ~Tanya nae sai eina. (That was very funny.)~ [P#DEH28]
+@77   = ~Detholalle. (Your choice.)~ [P#DEH29]
+@78   = ~Manka lle merna. (If you wish.)~ [P#DEH30]
+@79   = ~Fe'amin nwalya. (My soul aches.)~ [P#DEH31]
+@80   = ~Tulien! (Coming!)~ [P#DEH32]
+@81   = ~Seasamin. (My pleasure.)~ [P#DEH33]
+@82   = ~Lye nuquernuva sen e dagor. (We will defeat them in battle.)~ [P#DEH34]
+@83   = ~Lle creoso. (You are welcome.)~ [P#DEH35]
+@84   = ~Ed' i'ear ar' elenea! (By the sea and stars!)~ [P#DEH36]
+@85   = ~Utinu en lokirim! (Son of snakes!)~ [P#DEH37]
+@86   = ~Lle lakwenien? (Are you kidding?)~ [P#DEH38]
+@87   = ~Tessa sina ten' amin. (Hold onto this for me.)~ [P#DEH39]
+@88   = ~Cam'wethrin en marth. (Thief's luck.)~ [P#DEH40]
+@89   = ~Lle neek amin? (Can you see me?)~ [P#DEH41]
+@90   = ~Rina istorlle... Rina istorlle... Sai *maara*! (Memorize your spells... Memorize your spells... Very *useful*!)~ [P#DEH42]
+@91   = ~En! Ta naa neuma! (Look! It is a trap!)~ [P#DEH43]
+@92   = ~For a long time DEHERIANA was but a name for you, but a name that you heard often from her widowed husband - Kivan. Touched by his grief, you insisted that the High Priestess Demin of Suldanessellar resurrected the ranger's beloved. Only time will tell if your decision was right or wrong.~
+
+@93   = ~Dreamcatcher Amulet~
+@94   = ~<CHARNAME> of Candlekeep added feathers and beads onto a simple leather cord, and made knots on it using the ancient magic, and thus she enchanted this simple necklace to ward off bad dreams.~
+
+@95   = ~Tazok's Heart~
+@96   = ~This is Tazok's heart.~
+@97   = ~Kivan's Bow~
+@98   = ~This long bow was given to Kivan by his wife Deheriana as a wedding gift.
+
+STATISTICS:
+
+Equipped Abilities:
+
+Armour class bonus: 1
+
+THAC0: +1
+Weight: 2
+Speed Factor: 1
+Proficiency Type: Longbow
+Type:  2-handed
+Requires: 6 Strength
+Only Usable By:
+Kivan~
+@99   = ~This long bow was given to Kivan by his wife Deheriana as a wedding gift. Neiros Gellantara wove a string from the dryad's hair, making the bow deadlier.
+
+STATISTICS:
+
+Equipped Abilities:
+
+Armour class bonus: 1
+Magic Resistance: 10%
+
+THAC0: +3
+Weight: 2
+Speed Factor: 1
+Proficiency Type: Longbow
+Type:  2-handed
+Requires: 6 Strength
+Only Usable By:
+Kivan~
+@100  = ~Ranger's Cape~
+@101  = ~A cape is a sleeveless outer garment or part of a garment that fits closely at the neck and hangs loosely over the shoulders. This hooded cape is made out of enchanted, color-shifting material that allows the wearer to blend with his environs. Apart from adding combat protections, the cape is prone to unnerve the onlookers.
+
+STATISTICS:
+
+Armor Class:  +2 vs. missile weapons
+Special:  Protects Against Critical Hits
+Saving Throws (death, breath, wand):  +2 bonus
+Weight:  3
+Only Usable By:
+Kivan~
+@102  = ~Sahuagin Nosering~
+@103  = ~This is a heavy golden nosering. According to Jozzi the Seasnake, it is enchanted with a permanent spell of the air breathing. Wearing it allows a marine creature, such as sahuagin or malenti, to stay ashore indefinitely.~
+@104  = ~Petyr~
+@105  = ~Heya friends.~
+@106  = ~Friends may come and go, but enemies accumulate. ~
+@107  = ~Happy, happy, happy!~
+@108  = ~Is that you again?~
+@109  = ~Nothing but troubles out of you, people.~
+@110  = ~I can't be bothered to play your stupid chivalry games no more.~
+@111  = ~It's time I stepped aside for a less experienced and less able man.~
+@112  = ~I wish I were what I was when I wanted to be what I am now. Uhm, I am tired, alright?~
+@113  = ~A bore is a man who steals your solitude without providin' you with company.~
+@114  = ~It takes two fools for a fight! You qualify, but what am I doin' here?~
+@115  = ~No victor believes in chance!~
+@116  = ~How good bad music and bad reasons sound when one marches against an enemy! ~
+@117  = ~Whoe'er heard of a thief with a battle cry?~
+@118  = ~Help!~
+@119  = ~Remember: no man who needs a monument ever ought to have un'.~
+@120  = ~To retain respect for sausages and healin' potions, un' must not watch 'em in the makin'.~
+@121  = ~An old druid once shared this sage thought with me: when skunks duel, wind direction is everythin'.~
+@122  = ~I either want less corruption in this city, or more chance to participate in it.~
+@123  = ~The higher we soar, the smaller we appear to those who cannot fly; so the deeper we go...~
+@124  = ~If a man has a great deal to put into it, a day can have a hundred pockets. ~
+@125  = ~Night. Night. Night. Night...~
+@126  = ~If I can be of any help, you're in worse trouble than I thought.~
+@127  = ~Man is the only animal that can remain on friendly terms with the victims he intends to eat until he eats 'em.~
+@128  = ~Start every day off with a smile and get it over with!~
+@129  = ~It usually takes more than three weeks to prepare a good impromptu speech.~
+@130  = ~I always said I wanted to be somebody... Guess I should have been more specific.~
+@131  = ~I'll do it, but don't expect miracles.~
+@132  = ~(sigh) No man would listen to you talk if he didn't know it was his turn next. It's never my turn, isn't it?~
+@133  = ~What can I say? We must believe in luck. For how else can we explain the success of our enemies?~
+@134  = ~Efficiency is intelligent laziness.~
+@135  = ~We will burn that bridge when we come to it.~
+@136  = ~Teamwork is wasting half of one's time explainin' to others why they're wrong.~
+@137  = ~There's a fine line between participation and mockery.~
+@138  = ~The right to be heard does not automatically include the right to be taken seriously.~
+@139  = ~The man who smiles when things go wrong has thought of someone to blame it on.~
+@140  = ~When everyone is against you, it means you're absolutely wrong - or you're absolutely right.~
+@141  = ~A little inaccuracy sometimes saves a ton of explanation. An accurate shot can do that as well.~
+@142  = ~If at first you don't succeed, destroy all evidence that you tried.~
+@143  = ~The rumors about the alleged inefficiency of my weapons were underestimates.~
+@144  = ~A few hours of mountain climbin' turn a villain and a saint into two rather equal creatures. Mules.~
+@145  = ~Getting caught is the mother of invention.~
+@146  = ~Whoever knows he is deep, strives for clarity; whoever would like to appear deep to the crowd, strives for obscurity.~
+@147  = ~Isn't it strange? The same people who laugh at gypsy fortune-tellers take magicks seriously.~
+@148  = ~Traps are free of all prejudices. They hate everyone equally.~
+@149  = ~"Right. If you cannot convince 'em, confuse them." With that, Shong starts a fanciful tale of his life, every time a new one. What's apparent is that he like antiques, and is one hell of a crook.~
+@150  = ~Jozzi Seasnake~
+@151  = ~Seasnake~
+@152  = ~Sir Chislav Jysstev~
+@153  = ~Neiros Gellantara~
+@154  = ~Neiros~
+@155  = ~Dryad's Braid~
+@156  = ~While dryad's hair has no magical properties of its own, it is known to give simple items made of it vivacity and brilliance.~
+@157  = ~Elven Spear~
+@158  = ~Elven Spear of Entanglement~
+@159  = ~One of man's earliest weapons, dating back to the most primitive of times, the first spears were simply wooden poles or sticks sharpened at one end.  When man mastered metals, spearheads were made from iron and steel.  Having reached this end, weaponers began experimenting with different types of spear heads, thus leading to the development of certain polearm types.
+
+STATISTICS:
+
+Damage:  1D6
+Damage type:  piercing
+Weight: 5
+Speed Factor: 6
+Proficiency Type: Spear
+Type:  2-handed
+Not Usable By:
+ Cleric
+  Mage~
+@160  = ~This is a plain looking short spear with a leaf-shaped point. It was balanced for a slender elven hand. Mage Thalantyr enchanted the weapon for Kivan of Shilmista.
+
+STATISTICS:
+
+Combat Abilities:
+10% chance with every hit that opponent is entangled for 24 seconds, no save
+THAC0: +2 bonus
+Damage:  1D6 +2
+Damage type:  piercing
+Weight: 3
+Speed Factor: 4
+Proficiency Type: Spear 
+Type:  2-handed
+Requires: 5 Strength
+Only Usable By: Elves
+Not Usable By:
+Cleric
+Mage~
+@161  = ~Lilarcor~
+@162  = ~PLEASE do not close this window until music decompression is complete.~
+//@163  = ~Mage/Fighter/Cleric~
+@164  = ~Change Deheriana's Class from Fighter/Mage/Cleric to:~
+@165  = ~Wild Mage~
+@166  = ~Specialist-Mage, Enchanter~
+@167  = ~Specialist-Mage, Diviner~
+//@168  = ~Do Not Install Alternative Portrait for Kivan.~
+//@169  = ~Select Kivan's Portrait~
+@170  = ~Install Herd's Alternative Portrait for Kivan.~
+@171  = ~Install ToB Portion of the Mod~
+@172  = ~After the events of the War of the Five, Kivan of Shilmista submerged himself into affairs of the Elvendom. As the former lover of the new Lady of Murder, he was unwilling to return to Shilmista, so instead he pledged his service to Queen Ellesime of Suldanessellar. In the dark year of 1371, when Evermeet, the Island of Elves, was assaulted, Kivan led one of the companies sent forth to aid the island from the Forest of Tethir. He proved himself a capable leader, and was loved by those who served under him. After the Tree of Souls was planted and the new elven homeland was born, many of Kivan's men wished to remain with their captain; thus, a mercenary elven company, "Fierce Kestrel", was born. It numbered some hundred highly skilled elves. At present, Kivan chooses his employers with care, and serves them honorably. It is known that the "Kestrel" would only break a contract if Elvendom would call upon their services.~
+@173  = ~All tales grow in telling, but the Lay of Kivan and <CHARNAME> is so fanciful that it is impossible to separate truth from myth. The Lady had been a peacemaker, and stopped nigh single-handedly the War of the Five that tore the Sword Coast asunder. In the very depth of the Abyss, she rejected the offer of godhood as easily as one casts away a pair of worn shoes. She did it for the love of a stern elven ranger, or so the bards say. Afterwards, the couple plunged themselves into the affairs of Elvendom.  In the dark year of 1371, when Evermeet, the Island of Elves, was assaulted, Kivan and <CHARNAME> led the companies sent forth to aid the island from the Forest of Tethir. After the Tree of Souls was planted and a new elven homeland was born, many of their men wished to remain with their captains; thus, a mercenary company, "Fierce Kestrel", was born. It numbered some hundred highly skilled elves. At present, Kivan and <CHARNAME> choose their employers with care, and serve them honorably. It is known that the "Kestrel" would only break a contract if Elvendom would call upon their services.~
+@174  = ~All tales grow in telling, but the Lay of Kivan and <CHARNAME> is so fanciful that it is impossible to separate truth from myth. The Lady had been a peacemaker, and stopped nigh single-handedly the War of the Five that tore the Sword Coast asunder. In the very depth of the Abyss, she rejected the offer of godhood as easily as one casts away a pair of worn shoes. She did it for the love of a stern elven ranger, or so the bards say. And they sing of how the lovers came to the court of Queen Ellesime the Fair, and of the Gift of the Seldarine that was bestowed on them. As all gifts from the gods, it was a double-edged sword: <CHARNAME>'s and Kivan's years were to be counted as one, taking from Kivan's long elven life, and extending <CHARNAME>'s shorter one, so they could live and die together. Kivan the Ranger is reputed to have said: "It is the least I can do, my love, after what you have put aside for me." So they lived thereafter a bright life of adventure, always in opposition to the rising influence of Bane, after Bane had come back into the world, devouring his son. After liberating slaves from a Temple of Bane, the couple was said to have adopted an orphan in memory of <CHARNAME>'s own destiny. It is safe to say that they shall die on the same day, as the Seldarine have promised.~
+@175  = ~Kivan and Deheriana traveled across Faerun, from Icewind Dale in the North to Calimshan in the South. They adventured along the way, but mainly stayed out of the bards' tales. Yet there are those among the small folk who still mention their names with gratitude and warmth. The arrival of their first-born child, however, made the couple consider returning to their homeland. Shilmista accepted its two wayward children. In these times of trouble for elvenkind, Kivan's kin had few qualms about his stern faith, even if they were slow to forgive his trespasses. Kivan and Deheriana lived quietly thereafter, eventually having four more children. The youngest, a solemn boy with dark, unruly curls, had shown a tendency to dream of the far away lands in his youth and left the sacred forest in the shadow of the Snowflake Mountains. He went into the wide world in search of adventure and that other strange thing that has no name but is known by all who hear the call of the roads.~
+@176  = ~Wreath of Shilmista~
+@177  = ~This is a wreath of leaves and twigs that Kivan made for you.
+
+STATISTICS:
+
+Weight: 1~
+@178  = ~This is a wreath of leaves and twigs that Kivan made for you.
+
+STATISTICS:
+
+Special: + 1 bonus to Charisma
+Special:  Protects Against all forms of panic and boosts morale.
+Weight: 1~
+
+@179  = ~Kivan's Bow~
+@180  = ~The magical bowstring of Gond makes even the legendary elven longbow more accurate and powerful.~
+@181  = ~The magical bowstring of Gond makes even the legendary elven longbow more accurate and powerful.
+
+STATISTICS:
+
+Equipped Abilities:
+
+Armour class bonus: 1
+Magic Resistance: 10%
+
+THACO: +5
+Weight: 1
+Speed Factor: 1
+Proficiency Type: Longbow
+Type:  2-handed
+Requires: 6 Strength
+Only Usable By:
+ Kivan~
+@182  = ~Placeholder~
+
+@183  = ~Arrow +3~
+@184  = ~The flight arrow, as its name implies, is built for distance.  These are lightweight arrows and are often used for hunting.  Most of these arrows are made of ash or birch and are 30 to 40 inches long.
+
+STATISTICS:
+
+Damage:  1D6
+Damage type:  missile (piercing)
+Weight:  0
+Launcher:  Bow
+Not usable by:
+ Cleric
+ Druid
+ Mage~
+
+@185  = ~These enchanted missiles far surpass the craftsmanship of any arrow, magical or otherwise, you have ever seen.
+
+STATISTICS:
+
+Damage:  1D6
+THACO:  +3
+Damage type:  missile (piercing)
+Weight: 0
+Launcher:  Bow
+Not usable by:
+ Cleric
+ Druid
+ Mage~
+@186 = ~Requires the main compoent to be installed.~
+@187 = ~This mod is not compatible with your game.~

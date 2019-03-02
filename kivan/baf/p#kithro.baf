@@ -1,0 +1,78 @@
+//Original
+
+//1. Have Deheriana
+
+IF
+  Global("StartEndBios","AR6200",1)
+  InParty("P#deher")
+  Global("P#KivanBio","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("P#KivanBio","GLOBAL",1)
+    TextScreen("PDEHE01")
+    SmallWait(1)
+    Continue()
+END
+
+// Do not have Deheriana
+
+//PC ascended or Romance interrupted or no Romance
+
+IF
+  Global("StartEndBios","AR6200",1)
+  InParty("P#Kivan")
+  Global("P#KivanBio","GLOBAL",0)
+  !InParty("P#Deher")
+  OR(3)
+  Global("PlayerChoseEssence","GLOBAL",1)
+  Global("P#KivanRomanceInactive","GLOBAL",1)
+  Global("P#KivanRomanceActive","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("P#KivanBio","GLOBAL",1)
+    TextScreen("PKIVA01")
+    SmallWait(1)
+    Continue()
+END
+
+//PC did not ascend, an elf
+
+IF
+Race(Player1,ELF)
+  Global("StartEndBios","AR6200",1)
+  InParty("P#Kivan")
+  !InParty("P#Deher")
+  Global("P#KivanBio","GLOBAL",0)
+  Global("P#KivanRomanceActive","GLOBAL",2)
+  Global("PlayerChoseEssence","GLOBAL",0)
+  !Global("P#KivanRomanceInactive","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("P#KivanBio","GLOBAL",1)
+    TextScreen("PKIVA02")
+    SmallWait(1)
+    Continue()
+END
+
+//PC did not ascend, is not an elf
+
+IF
+!Race(Player1,ELF)
+  Global("StartEndBios","AR6200",1)
+  InParty("P#Kivan")
+  !InParty("P#Deher")
+  Global("P#KivanBio","GLOBAL",0)
+  Global("P#KivanRomanceActive","GLOBAL",2)
+  Global("PlayerChoseEssence","GLOBAL",0)
+  !Global("P#KivanRomanceInactive","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("P#KivanBio","GLOBAL",1)
+    TextScreen("PKIVA03")
+    SmallWait(1)
+    Continue()
+END
+
+
+
+

@@ -1,0 +1,342 @@
+/* EET: Deheriana will be gone if she wasn't in party during transition */
+
+
+IF
+!InParty(Myself)
+GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)
+THEN
+RESPONSE #100
+DestroySelf()
+END
+
+
+
+IF
+InParty(Myself)
+Global("P#DeherPlot","GLOBAL",0)
+Global("P#DeherianaLives","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#DeherPlot","Global",1)
+RealSetGlobalTimer("P#DeherTrial","GLOBAL",1800)
+END
+
+IF
+InParty(Myself)
+RealGlobalTimerExpired("P#DeherTrial","GLOBAL")
+GlobalLT("P#AerieSupport","GLOBAL",2)
+GlobalLT("P#CerndSupport","GLOBAL",2)
+GlobalLT("P#PCSupport","GLOBAL",2)
+Global("P#DeherianaLives","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#DeherianaLives","GLOBAL",3)
+StartDialogueNoSet(Player1)
+END
+
+IF
+!InParty(Myself)
+RealGlobalTimerExpired("P#DeherTrial","GLOBAL")
+THEN
+RESPONSE #100
+SetGlobal("P#DeherianaLives","GLOBAL",3)
+DestroySelf()
+END
+
+IF
+InParty(Myself)
+RealGlobalTimerExpired("P#DeherTrial","GLOBAL")
+OR(3)
+!GlobalLT("P#AerieSupport","GLOBAL",2)
+!GlobalLT("P#CerndSupport","GLOBAL",2)
+!GlobalLT("P#PCSupport","GLOBAL",2)
+Global("P#DeherianaLives","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#DeherianaLives","GLOBAL",4)
+StartDialogueNoSet(Player1)
+END
+
+//Stats Modification
+
+//Player1 is below 1,250,000 XP
+
+IF
+InParty(Myself)
+XPLT(Player1,1250000)
+Global("P#DehWeak","GLOBAL",0)
+Global("P#DeherianaLives","GLOBAL",6)
+THEN
+RESPONSE #100
+SetGlobal("P#DehWeak","GLOBAL",1)
+AddXPObject("P#DEHER",1000000)
+ReallyForceSpellRES("SPWISH02","P#DEHER")
+ReallyForceSpellRES("SPWISH02","P#DEHER")
+ReallyForceSpellRES("SPWISH03","P#DEHER")
+ReallyForceSpellRES("SPWISH03","P#DEHER")
+ReallyForceSpellRES("SPWISH03","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+END
+
+//player between 1,250,000 and 1,875,000 XP
+
+IF
+InParty(Myself)
+XPGT(Player1,1249999)
+XPLT(Player1,1875000)
+Global("P#DehWeak","GLOBAL",0)
+Global("P#DeherianaLives","GLOBAL",6)
+THEN
+RESPONSE #100
+SetGlobal("P#DehWeak","GLOBAL",1)
+AddXPObject("P#DEHER",1500000)
+ReallyForceSpellRES("SPWISH02","P#DEHER")
+ReallyForceSpellRES("SPWISH02","P#DEHER")
+ReallyForceSpellRES("SPWISH03","P#DEHER")
+ReallyForceSpellRES("SPWISH03","P#DEHER")
+ReallyForceSpellRES("SPWISH03","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+END
+
+//player between 1,875,000 and 2250000 XP
+
+IF
+InParty(Myself)
+XPGT(Player1,1874999)
+XPLT(Player1,2250000)
+Global("P#DehWeak","GLOBAL",0)
+Global("P#DeherianaLives","GLOBAL",6)
+THEN
+RESPONSE #100
+SetGlobal("P#DehWeak","GLOBAL",1)
+AddXPObject("P#DEHER",2000000)
+ReallyForceSpellRES("SPWISH02","P#DEHER")
+ReallyForceSpellRES("SPWISH02","P#DEHER")
+ReallyForceSpellRES("SPWISH03","P#DEHER")
+ReallyForceSpellRES("SPWISH03","P#DEHER")
+ReallyForceSpellRES("SPWISH03","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+END
+
+//player between 2250000 and 3000000 XP
+
+IF
+InParty(Myself)
+XPGT(Player1,2249999)
+XPLT(Player1,3000000)
+Global("P#DehWeak","GLOBAL",0)
+Global("P#DeherianaLives","GLOBAL",6)
+THEN
+RESPONSE #100
+SetGlobal("P#DehWeak","GLOBAL",1)
+AddXPObject("P#DEHER",2500000)
+ReallyForceSpellRES("SPWISH02","P#DEHER")
+ReallyForceSpellRES("SPWISH02","P#DEHER")
+ReallyForceSpellRES("SPWISH03","P#DEHER")
+ReallyForceSpellRES("SPWISH03","P#DEHER")
+ReallyForceSpellRES("SPWISH03","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+END
+
+//player > 3000000 XP
+
+IF
+InParty(Myself)
+XPGT(Player1,2999999)
+Global("P#DehWeak","GLOBAL",0)
+Global("P#DeherianaLives","GLOBAL",6)
+THEN
+RESPONSE #100
+SetGlobal("P#DehWeak","GLOBAL",1)
+AddXPObject("P#DEHER",3500000)
+ReallyForceSpellRES("SPWISH02","P#DEHER")
+ReallyForceSpellRES("SPWISH02","P#DEHER")
+ReallyForceSpellRES("SPWISH03","P#DEHER")
+ReallyForceSpellRES("SPWISH03","P#DEHER")
+ReallyForceSpellRES("SPWISH03","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+ReallyForceSpellRES("SPWISH04","P#DEHER")
+END
+
+
+//Aerie Support
+IF
+InParty(Myself)
+InParty("Aerie")
+Global("P#DeherianaLives","GLOBAL",2)
+Global("P#AerieSupport","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#AerieSupport","GLOBAL",1)
+RealSetGlobalTimer("P#DeherAerieTalks","GLOBAL",300)
+SetGlobal("P#DEAETalk","GLOBAL",1)
+END
+
+IF
+InParty(Myself)
+RealGlobalTimerExpired("P#DeherAerieTalks","GLOBAL")
+Global("P#DeherianaLives","GLOBAL",2)
+OR(3)
+Global("P#DEAETalk","GLOBAL",1)
+Global("P#DEAETalk","GLOBAL",3)
+Global("P#DEAETalk","GLOBAL",5)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#DeAETalkTime","GLOBAL",1)
+IncrementGlobal("P#DEAETalk","GLOBAL",1)
+ActionOverride("Aerie",StartDialogueNoSet(Player1))
+END
+
+IF 
+InParty(Myself)
+RealGlobalTimerExpired("P#DeAETalkTime","GLOBAL")
+OR(3)
+Global("P#DEAETalk","GLOBAL",2)
+Global("P#DEAETalk","GLOBAL",4)
+Global("P#DEAETalk","GLOBAL",6)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#DeherAerieTalks","GLOBAL",300)
+IncrementGlobal("P#DEAETalk","GLOBAL",1)
+END
+
+//Cernd Support
+IF
+InParty(Myself)
+InParty("Cernd")
+Global("P#CerndSupport","GLOBAL",0)
+Global("P#DeherianaLives","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#CerndSupport","GLOBAL",1)
+RealSetGlobalTimer("P#DeherCerndTalks","GLOBAL",350)
+SetGlobal("P#DECETalk","GLOBAL",1)
+END
+
+IF
+InParty(Myself)
+RealGlobalTimerExpired("P#DeherCerndTalks","GLOBAL")
+Global("P#DeherianaLives","GLOBAL",2)
+OR(3)
+Global("P#DECETalk","GLOBAL",1)
+Global("P#DECETalk","GLOBAL",3)
+Global("P#DEAETalk","GLOBAL",5)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#DeCETalkTime","GLOBAL",1)
+IncrementGlobal("P#DECETalk","GLOBAL",1)
+StartDialogueNoSet(Player1)
+END
+
+IF 
+InParty(Myself)
+RealGlobalTimerExpired("P#DeCETalkTime","GLOBAL")
+OR(3)
+Global("P#DECETalk","GLOBAL",2)
+Global("P#DECETalk","GLOBAL",4)
+Global("P#DECETalk","GLOBAL",6)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#DeherCerndTalks","GLOBAL",300)
+IncrementGlobal("P#DECETalk","GLOBAL",1)
+END
+
+//Kivan Love
+IF
+InParty(Myself)
+InParty("P#KIVAN")
+Global("P#DEKITalk","GLOBAL",0)
+Global("P#DeherianaLives","GLOBAL",2)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#DeherKivanTalks","GLOBAL",200)
+SetGlobal("P#DEKITalk","GLOBAL",1)
+END
+
+IF
+InParty(Myself)
+RealGlobalTimerExpired("P#DeherKivanTalks","GLOBAL")
+Global("P#DeherianaLives","GLOBAL",2)
+OR(3)
+Global("P#DEKITalk","GLOBAL",1)
+Global("P#DEKITalk","GLOBAL",3)
+Global("P#DEKITalk","GLOBAL",5)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#DeKITalkTime","GLOBAL",1)
+IncrementGlobal("P#DEKITalk","GLOBAL",1)
+ActionOverride("P#KIVAN",StartDialogueNoSet(Player1))
+END
+
+IF 
+InParty(Myself)
+RealGlobalTimerExpired("P#DeKITalkTime","GLOBAL")
+OR(3)
+Global("P#DEKITalk","GLOBAL",2)
+Global("P#DEKITalk","GLOBAL",4)
+Global("P#DEKITalk","GLOBAL",6)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#DeherKivanTalks","GLOBAL",300)
+IncrementGlobal("P#DEKITalk","GLOBAL",1)
+END
+
+
+//PC Support
+IF
+InParty(Myself)
+Global("P#DeherianaLives","GLOBAL",2)
+OR(4)
+Class(Player1,PALADIN_ALL)
+Class(Player1,DRUID_ALL)
+Class(Player1,CLERIC_ALL)
+Class(Player1,RANGER_ALL)
+Global("P#PCSupport","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#DEPCTalk","GLOBAL",1)
+SetGlobal("P#PCSupport","GLOBAL",1)
+RealSetGlobalTimer("P#DeherPCTalks","GLOBAL",500)
+END
+
+IF
+InParty(Myself)
+RealGlobalTimerExpired("P#DeherPCTalks","GLOBAL")
+Global("P#DeherianaLives","GLOBAL",2)
+Global("P#DEPCTalk","GLOBAL",1)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#DePCTalkTime","GLOBAL",1)
+IncrementGlobal("P#DEPCTalk","GLOBAL",1)
+StartDialogueNoSet(Player1)
+END
+
+IF 
+InParty(Myself)
+RealGlobalTimerExpired("P#DePCTalkTime","GLOBAL")
+Global("P#DEPCTalk","GLOBAL",2)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#DeherPCTalks","GLOBAL",600)
+IncrementGlobal("P#DEPCTalk","GLOBAL",1)
+END
+

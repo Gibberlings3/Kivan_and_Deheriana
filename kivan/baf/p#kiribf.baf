@@ -1,0 +1,81 @@
+IF
+InParty(Myself)
+CombatCounter(0) !See([ENEMY])
+Global("P#KivanLoversQuest","GLOBAL",1)
+PartyHasItem("MISC5R")
+!AreaCheck("AR0404")
+!AreaType(DUNGEON)
+GlobalLT("Chapter","GLOBAL",%bg2_chapter_4%)
+THEN
+RESPONSE #100
+IncrementGlobal("P#KivanLoversQuest","GLOBAL",1)
+StartDialogueNoSet(Player1)
+END
+
+IF
+InParty(Myself)
+Global("P#KivanLoversQuest","GLOBAL",6)
+Global("P#RingEntry1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#RingEntry1","GLOBAL",1)
+AddJournalEntry(@10003,QUEST_DONE)
+EraseJournalEntry(@10001)
+END
+
+IF
+InParty(Myself)
+Global("P#KivanLoversQuest","GLOBAL",5)
+Global("P#RingEntry2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#RingEntry2","GLOBAL",1)
+AddJournalEntry(@10000,QUEST)
+END
+
+IF
+InParty(Myself)
+Global("P#SummonChislav","GLOBAL",1)
+Global("P#RingEntry3","GLOBAL",0)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#Chislav","GLOBAL",3000)
+SetGlobal("P#RingEntry3","GLOBAL",1)
+AddJournalEntry(@10002,QUEST)
+END
+
+IF
+InParty(Myself)
+GlobalGT("P#KivanLoversQuest","GLOBAL",5)
+Global("P#RingEntry4","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#RingEntry4","GLOBAL",1)
+EraseJournalEntry(@10001)
+EraseJournalEntry(@10000)
+EraseJournalEntry(@10004)
+EraseJournalEntry(@10002)
+END
+
+IF
+InParty(Myself)
+Global("P#SummonChislav","GLOBAL",1)
+RealGlobalTimerExpired("P#Chislav","GLOBAL")
+OR(7)
+AreaCheck("AR0500")
+AreaCheck("AR0400")
+AreaCheck("AR0900")
+AreaCheck("AR1000")
+AreaCheck("AR0800")
+AreaCheck("AR0700")
+AreaCheck("AR0300")
+THEN
+RESPONSE #100
+SetGlobal("P#SummonChislav","GLOBAL",2)
+CreateCreatureObject("P#CHISL","P#kivan",0,0,0)
+Wait(1)
+ActionOverride("chislav",Dialogue(Player1))
+END
+
+
+

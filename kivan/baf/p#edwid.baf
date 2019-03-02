@@ -1,0 +1,19 @@
+//Edwin
+
+IF
+RealGlobalTimerExpired("P#KivanRestTimer","GLOBAL")
+InParty(Myself)
+CombatCounter(0) !See([ENEMY])
+InParty("P#Kivan")
+See("P#Kivan")
+!StateCheck("P#Kivan",STATE_SLEEPING)
+AreaType(OUTDOOR)
+OR(3)
+Global("P#KIPED1","LOCALS",0)
+Global("P#KIPED1","LOCALS",2)
+Global("P#KIPED1","LOCALS",4)
+THEN
+RESPONSE #100
+IncrementGlobal("P#KIPED1","LOCALS",1)
+StartDialogueNoSet("P#kivan")
+END

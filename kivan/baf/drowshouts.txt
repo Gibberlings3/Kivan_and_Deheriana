@@ -1,0 +1,64 @@
+IF
+InParty(Myself)
+Global("P#SetDrowShout","LOCALS",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SetDrowShout","LOCALS",1)
+RealSetGlobalTimer("P#KivanDrowShoutTime","GLOBAL",60)
+END
+
+IF
+AttackedBy([0.0.ELF.0.0.0.0],DEFAULT)
+RealGlobalTimerExpired("P#KivanDrowShoutTime","GLOBAL")
+OR(19)
+AreaCheck("AR2100")
+AreaCheck("AR2200")
+AreaCheck("AR2101")
+AreaCheck("AR2102")
+AreaCheck("AR2103")
+AreaCheck("AR2104")
+AreaCheck("AR2105")
+AreaCheck("AR2500")
+AreaCheck("AR6100")
+AreaCheck("AR6101")
+AreaCheck("AR6102")
+AreaCheck("AR6103")
+AreaCheck("AR6104")
+AreaCheck("AR6105")
+AreaCheck("AR6106")
+AreaCheck("AR6107")
+AreaCheck("AR6108")
+AreaCheck("AR6109")
+AreaCheck("AR6110")
+THEN
+RESPONSE #50
+		SetGlobal("P#Drow","LOCALS",1)
+		DisplayStringHead(Myself,~Death to the Drow!~)
+		RealSetGlobalTimer("P#KivanDrowShoutTime","GLOBAL",60)
+		Shout(153)
+RESPONSE #50
+		SetGlobal("P#Drow","LOCALS",1)
+		DisplayStringHead(Myself,~In Shevarash name!~)
+		RealSetGlobalTimer("P#KivanDrowShoutTime","GLOBAL",60)
+		Shout(153)
+RESPONSE #50
+		SetGlobal("P#Drow","LOCALS",1)
+		DisplayStringHead(Myself,~Be damned, Lloth's spawn!~)
+		RealSetGlobalTimer("P#KivanDrowShoutTime","GLOBAL",60)
+		Shout(153)
+RESPONSE #50
+		SetGlobal("P#Drow","LOCALS",1)
+		DisplayStringHead(Myself,~For Shevarash!~)
+		RealSetGlobalTimer("P#KivanDrowShoutTime","GLOBAL",60)
+		Shout(153)
+RESPONSE #50
+		SetGlobal("P#Drow","LOCALS",1)
+		DisplayStringHead(Myself,~Doomed be the dark ones!~)
+		RealSetGlobalTimer("P#KivanDrowShoutTime","GLOBAL",60)
+		Shout(153)
+RESPONSE #50
+		SetGlobal("P#Drow","LOCALS",1)
+		DisplayStringHead(Myself,~Vengeance for our fallen!~)
+		RealSetGlobalTimer("P#KivanDrowShoutTime","GLOBAL",60)
+		Shout(153)
+END

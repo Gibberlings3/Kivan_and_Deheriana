@@ -1,0 +1,43 @@
+@159  = ~One of man's earliest weapons, dating back to the most primitive of times, the first spears were simply wooden poles or sticks sharpened at one end.  When man mastered metals, spearheads were made from iron and steel.  Having reached this end, weaponers began experimenting with different types of spear heads, thus leading to the development of certain polearm types.
+
+STATISTICS:
+
+Damage:  1D6
+Damage type:  piercing
+Weight: 5
+Speed Factor: 6
+Proficiency Type: Spear
+Type:  2-handed~
+@160  = ~This is a plain looking short spear with a leaf-shaped point. It was balanced for a slender elven hand. Mage Thalantyr enchanted the weapon for Kivan of Shilmista.
+
+STATISTICS:
+
+Combat Abilities:
+10% chance with every hit that opponent is entangled for 24 seconds, no save
+THAC0: +2 bonus
+Damage:  1D6 +2
+Damage type:  piercing
+Weight: 3
+Speed Factor: 4
+Proficiency Type: Spear 
+Type:  2-handed
+Requires: 5 Strength~
+
+@184  = ~The flight arrow, as its name implies, is built for distance.  These are lightweight arrows and are often used for hunting.  Most of these arrows are made of ash or birch and are 30 to 40 inches long.
+
+STATISTICS:
+
+Damage:  1D6
+Damage type:  missile (piercing)
+Weight:  0
+Launcher:  Bow~
+
+@185  = ~These enchanted missiles far surpass the craftsmanship of any arrow, magical or otherwise, you have ever seen.
+
+STATISTICS:
+
+Damage:  1D6
+THACO:  +3
+Damage type:  missile (piercing)
+Weight: 0
+Launcher:  Bow~

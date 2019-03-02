@@ -1,0 +1,11 @@
+IF
+!Exists("P#NEIROS")
+Global("P#NEIRExists","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#NEIRExists","GLOBAL",1)
+CreateCreature("P#NEIROS",[2678.2854],9)
+END
+
+
+

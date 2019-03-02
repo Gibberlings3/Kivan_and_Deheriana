@@ -1,0 +1,457 @@
+//Enable Kivan's flirts
+
+IF
+InParty(Myself)
+Global("P#DisableKivanFlirts","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DisableKivanFlirts","GLOBAL",0)
+END
+
+//Set Up the Kivan Romance Active to 2
+
+IF
+InParty(Myself)
+Global("P#Test","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#Test","GLOBAL",1)
+DisplayStringHead(Myself,4592)
+END
+
+IF
+InParty(Myself)
+Global("P#KivanFRTOBStartRomance","GLOBAL",0)
+!Global("P#KivanRomanceInactive","GLOBAL",1)
+OR(2)
+Global("P#KivanRomanceActive","GLOBAL",2)
+Global("P#KivanRomanceActive","GLOBAL",1)
+Global("P#KivanRomanceComplete","GLOBAL",1)
+!Global("AnomenRomanceActive","GLOBAL",2)
+!Global("J#KelseyRomanceActive","GLOBAL",2)
+!GlobalGT("SolaTalk","GLOBAL",13)
+!Global("TsujathaRomanceActive","GLOBAL",2)
+!Global("ChloeRomanceActiveCR","GLOBAL",2)
+!Global("H#ValygarRomanceActive","GLOBAL",2)
+!Global("ImoenRomanceActive","GLOBAL",2)
+!Global("EdwinRomanceActive","GLOBAL",2)
+!Global("O#XanRomanceActive","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#KivanFRTOBStartRomance","GLOBAL",1)
+SetGlobal("P#KivanRomanceActive","GLOBAL",2)
+END
+
+IF
+InParty(Myself)
+Global("P#KivanFRTOBStartRomance","GLOBAL",1)
+Global("P#KivanRomanceActive","GLOBAL",2)
+!Global("P#KivanRomanceInactive","GLOBAL",1)
+Global("P#KiLOTOBTalk","GLOBAL",0)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#KiLOTOBTalkTime","GLOBAL",1000)
+SetGlobal("P#KiLOTOBTalk","GLOBAL",1)
+END
+
+IF
+InParty(Myself)
+CombatCounter(0) 
+!See([ENEMY])
+RealGlobalTimerExpired("P#KiLOTOBTalkTime","GLOBAL")
+See(Player1)
+!Global("P#KivanRomanceInactive","GLOBAL",1)
+Global("P#KiLOTOBTalk","GLOBAL",1)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#KiLoTalkTime","GLOBAL",1)
+IncrementGlobal("P#KiLOTOBTalk","GLOBAL",1)
+PlaySong(0)
+PlaySound("kivan00")
+StartDialogueNoSet(Player1)
+END
+
+IF 
+InParty(Myself)
+RealGlobalTimerExpired("P#KiLoTalkTime","GLOBAL")
+OR(7)
+Global("P#KiLOTOBTalk","GLOBAL",2)
+Global("P#KiLOTOBTalk","GLOBAL",4)
+Global("P#KiLOTOBTalk","GLOBAL",6)
+Global("P#KiLOTOBTalk","GLOBAL",8)
+Global("P#KiLOTOBTalk","GLOBAL",10)
+Global("P#KiLOTOBTalk","GLOBAL",12)
+Global("P#KiLOTOBTalk","GLOBAL",14)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#KiLOTOBTalkTime","GLOBAL",100)
+IncrementGlobal("P#KiLOTOBTalk","GLOBAL",1)
+END
+
+IF
+InParty(Myself)
+Global("P#KivanIntimate","GLOBAL",1)
+Global("P#KiMorningTalk","GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#KiMorningTalk","GLOBAL",1)
+PlaySong(0)
+PlaySound("kivan00")
+StartDialogueNoSet(Player1)
+END
+
+//NPC-initiated Flirts, Part 1. Standard//
+
+IF
+InParty(Myself)
+Global("P#DisableKivanFlirts","GLOBAL",0)
+Global("P#KivanRomanceActive","GLOBAL",2)
+!Global("P#KivanRomanceInactive","GLOBAL",1)
+GlobalGT("P#KiLOTOBTalk","GLOBAL",2)
+Global("P#KivFlirtEarly","GLOBAL",0)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#KIFlirtEarlyTime","GLOBAL",300)
+SetGlobal("P#KivFlirtEarly","GLOBAL",1)
+END
+
+IF
+InParty(Myself)
+Global("P#DisableKivanFlirts","GLOBAL",0)
+CombatCounter(0) !See([ENEMY])
+RealGlobalTimerExpired("P#KIFlirtEarlyTime","GLOBAL")
+Global("P#KivanRomanceActive","GLOBAL",2)
+!Global("P#KivanRomanceInactive","GLOBAL",1)
+!AreaType(DUNGEON)
+Global("P#KivFlirtEarly","GLOBAL",1)
+THEN
+RESPONSE #100
+PlaySong(0)
+PlaySound("kivan00")
+RealSetGlobalTimer("P#KIFlirtEarlyTime","GLOBAL",1)
+IncrementGlobal("P#KivFlirtEarly","GLOBAL",1)
+StartDialogueNoSet(Player1)
+END
+
+IF 
+InParty(Myself)
+RealGlobalTimerExpired("P#KIFlirtEarlyTime","GLOBAL")
+Global("P#KivFlirtEarly","GLOBAL",2)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#KIFlirtEarlyTime","GLOBAL",2000)
+IncrementGlobal("P#KivFlirtEarlyCounter","GLOBAL",1)
+IncrementGlobal("P#KivFlirtEarly","GLOBAL",1)
+END
+
+IF 
+InParty(Myself)
+RealGlobalTimerExpired("P#KIFlirtEarlyTime","GLOBAL")
+Global("P#KivFlirtEarly","GLOBAL",3)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#KIFlirtEarlyTime","GLOBAL",10)
+SetGlobal("P#KivFlirtEarly","GLOBAL",1)
+END
+
+IF 
+InParty(Myself)
+!Global("P#KivFlirtEarly","GLOBAL",4)
+OR(2)
+GlobalGT("P#KivFlirtEarlyCounter","GLOBAL",30)
+Global("P#DisableKivanFlirts","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#KivFlirtEarly","GLOBAL",4)
+END
+
+//NPC-initiated Flirts, Part 2. Night//
+
+IF
+InParty(Myself)
+Global("P#DisableKivanFlirts","GLOBAL",0)
+Global("P#KivanRomanceActive","GLOBAL",2)
+!Global("P#KivanRomanceInactive","GLOBAL",1)
+GlobalGT("P#KiLOTOBTalk","GLOBAL",14)
+Global("P#KivFlirtNight","GLOBAL",0)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#KIFlirtNightTime","GLOBAL",300)
+SetGlobal("P#KivFlirtNight","GLOBAL",1)
+END
+
+IF
+InParty(Myself)
+RealGlobalTimerExpired("P#KIFlirtNightTime","GLOBAL")
+Global("P#KivFlirtNight","GLOBAL",2)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#KIFlirtNightTime","GLOBAL",100)
+IncrementGlobal("P#KivFlirtNightCounter","GLOBAL",1)
+IncrementGlobal("P#KivFlirtNight","GLOBAL",1)
+END
+
+IF 
+InParty(Myself)
+RealGlobalTimerExpired("P#KIFlirtNightTime","GLOBAL")
+Global("P#KivFlirtNight","GLOBAL",3)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#KIFlirtNightTime","GLOBAL",10)
+SetGlobal("P#KivFlirtNight","GLOBAL",1)
+END
+
+IF 
+InParty(Myself)
+!Global("P#KivFlirtNight","GLOBAL",4)
+OR(2)
+GlobalGT("P#KivFlirtNightCounter","GLOBAL",40)
+Global("P#DisableKivanFlirts","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#KivFlirtNight","GLOBAL",4)
+END
+
+//Set Sequential FRTOBlytalks//
+
+IF
+InParty(Myself)
+Global("P#KivanFRTOBStart","GLOBAL",0)
+ReputationGT(Player1,10)
+!AreaCheck("AR4000")
+THEN
+RESPONSE #100
+SetGlobal("P#KivanFRTOBStart","GLOBAL",1)
+END
+
+IF
+InParty(Myself)
+Global("P#KivanFRTOBStart","GLOBAL",1)
+Global("P#KiFRTOBTalk","GLOBAL",0)
+Global("P#KivanFRTOB","GLOBAL",0)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#KiFRTOBTalkTime","GLOBAL",400)
+SetGlobal("P#KiFRTOBTalk","GLOBAL",1)
+SetGlobal("P#KivanFRTOB","GLOBAL",1)
+END
+
+IF
+InParty(Myself)
+CombatCounter(0) !See([ENEMY])
+RealGlobalTimerExpired("P#KiFRTOBTalkTime","GLOBAL")
+ReputationGT(Player1,10)
+See(Player1)
+Global("P#KivanFRTOB","GLOBAL",1)
+OR(5)
+Global("P#KiFRTOBTalk","GLOBAL",1)
+Global("P#KiFRTOBTalk","GLOBAL",3)
+Global("P#KiFRTOBTalk","GLOBAL",5)
+Global("P#KiFRTOBTalk","GLOBAL",7)
+Global("P#KiFRTOBTalk","GLOBAL",9)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#KiTalkTime","GLOBAL",1)
+IncrementGlobal("P#KiFRTOBTalk","GLOBAL",1)
+PlaySong(0)
+PlaySound("kivan00")
+StartDialogueNoSet(Player1)
+END
+
+IF 
+InParty(Myself)
+RealGlobalTimerExpired("P#KiTalkTime","GLOBAL")
+OR(5)
+Global("P#KiFRTOBTalk","GLOBAL",2)
+Global("P#KiFRTOBTalk","GLOBAL",4)
+Global("P#KiFRTOBTalk","GLOBAL",6)
+Global("P#KiFRTOBTalk","GLOBAL",8)
+Global("P#KiFRTOBTalk","GLOBAL",10)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#KiFRTOBTalkTime","GLOBAL",1800)
+IncrementGlobal("P#KiFRTOBTalk","GLOBAL",1)
+END
+
+//Conditional Friendship Talks//
+
+//In Amkethran, the Talk about Melissan
+
+IF
+InParty(Myself)
+CombatCounter(0) !See([ENEMY])
+AreaCheck("AR5500")
+Global("P#KiMelissanTalk","GLOBAL",0)
+See(Player1)
+THEN
+RESPONSE #100
+IncrementGlobal("P#KiMelissanTalk","GLOBAL",1)
+RealSetGlobalTimer("P#KiFRTOBTalkTime","GLOBAL",900)
+PlaySong(0)
+PlaySound("kivan00")
+StartDialogueNoSet(Player1)
+END
+
+//Saradush Fell
+
+IF 
+InParty(Myself)
+CombatCounter(0)
+!See([ENEMY])
+See(Player1)
+!StateCheck(Player1,STATE_SLEEPING)
+Dead("yaga01")
+Global("P#KiSaradushTalk","GLOBAL",0)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#KiSaradushTalkTime","GLOBAL",1000)
+IncrementGlobal("P#KiSaradushTalk","GLOBAL",1)
+END
+
+IF
+InParty(Myself)
+CombatCounter(0) !See([ENEMY])
+RealGlobalTimerExpired("P#KiSaradushTalkTime","GLOBAL")
+ReputationGT(Player1,10)
+See(Player1)
+Global("P#KiSaradushTalk","GLOBAL",1)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#KiTalkTime","GLOBAL",900)
+IncrementGlobal("P#KiSaradushTalk","GLOBAL",1)
+PlaySong(0)
+PlaySound("kivan00")
+StartDialogueNoSet(Player1)
+END
+
+//Met Balthazar
+
+IF 
+InParty(Myself)
+CombatCounter(0)
+!See([ENEMY])
+See(Player1)
+!StateCheck(Player1,STATE_SLEEPING)
+GlobalGT("METBAL","GLOBAL",0)
+Global("P#KiLordTalk","GLOBAL",0)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#KiLordTalkTime","GLOBAL",1000)
+IncrementGlobal("P#KiLordTalk","GLOBAL",1)
+END
+
+IF
+InParty(Myself)
+CombatCounter(0) !See([ENEMY])
+RealGlobalTimerExpired("P#KiLordTalkTime","GLOBAL")
+ReputationGT(Player1,10)
+See(Player1)
+Global("P#KiLordTalk","GLOBAL",1)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#KiTalkTime","GLOBAL",900)
+IncrementGlobal("P#KiLordTalk","GLOBAL",1)
+PlaySong(0)
+PlaySound("kivan00")
+StartDialogueNoSet(Player1)
+END
+
+//Trial Talk 
+
+IF
+InParty(Myself)
+CombatCounter(0) !See([ENEMY])
+See(Player1)
+GlobalGT("BeginChallenge4","GLOBAL",5)
+Global("P#KiTrialTalk","GLOBAL",0)
+AreaCheck("AR4500")
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#KiTalkTime","GLOBAL",900)
+IncrementGlobal("P#KiTrialTalk","GLOBAL",1)
+PlaySong(0)
+PlaySound("kivan00")
+StartDialogueNoSet(Player1)
+END
+
+//Watcher's Keep itj
+
+IF
+InParty(Myself)
+CombatCounter(0) !See([ENEMY])
+See(Player1)
+Global("TalkedTozGarOdr1","GLOBAL",1)
+Global("P#KiWKTalk","GLOBAL",0)
+AreaCheck("AR3000")
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#KiTalkTime","GLOBAL",900)
+IncrementGlobal("P#KiWKTalk","GLOBAL",1)
+StartDialogueNoSet(Player1)
+END
+
+//Abazigal Talk
+
+IF
+InParty(Myself)
+CombatCounter(0) !See([ENEMY])
+See(Player1)
+OR(2)
+Dead("abazigal1")
+Dead("abazigal")
+Global("P#KiDragonBhaalspawn","GLOBAL",0)
+AreaCheck("AR6005")
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#KiTalkTime","GLOBAL",900)
+SetGlobal("P#KiDragonBhaalspawn","GLOBAL",1)
+PlaySong(0)
+PlaySound("kivan00")
+StartDialogueNoSet(Player1)
+END
+
+//Trial Talk, Romance
+
+IF
+InParty(Myself)
+CombatCounter(0) !See([ENEMY])
+See(Player1)
+Global("P#KivanRomanceActive","GLOBAL",2)
+!Global("P#KivanRomanceInactive","GLOBAL",1)
+GlobalGT("BeginChallenge3","GLOBAL",2)
+Global("P#KiInnocence","GLOBAL",0)
+AreaCheck("AR4500")
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#KiTalkTime","GLOBAL",900)
+IncrementGlobal("P#KiInnocence","GLOBAL",1)
+PlaySong(0)
+PlaySound("kivan00")
+StartDialogueNoSet(Player1)
+END
+
+//Ardic Itj
+
+IF
+InParty(Myself)
+CombatCounter(0) !See([ENEMY])
+See(Player1)
+Global("ArdicSaved","GLOBAL",1)
+Global("P#KivanAdric","GLOBAL",0)
+AreaCheck("AR5014")
+THEN
+RESPONSE #100
+SetGlobal("P#KivanAdric","GLOBAL",1)
+StartDialogueNoSet(Player1)
+END
+
+IF
+InParty(Myself)
+CombatCounter(0) !See([ENEMY])
+See(Player1)
+Global("P#KivanAdric","GLOBAL",1)
+!AreaCheck("AR5014")
+THEN
+RESPONSE #100
+SetGlobal("P#KivanAdric","GLOBAL",2)
+END

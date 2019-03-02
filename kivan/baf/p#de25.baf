@@ -1,0 +1,78 @@
+//Set Sequential FRTOBlytalks//
+
+IF
+InParty(Myself)
+Global("P#DeherFRTOBStart","GLOBAL",0)
+ReputationGT(Player1,10)
+!AreaCheck("AR4000")
+THEN
+RESPONSE #100
+SetGlobal("P#DeherFRTOBStart","GLOBAL",1)
+END
+
+IF
+InParty(Myself)
+Global("P#DeherFRTOBStart","GLOBAL",1)
+Global("P#DeFRTOBTalk","GLOBAL",0)
+Global("P#DeherFRTOB","GLOBAL",0)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#DeFRTOBTalkTime","GLOBAL",1800)
+SetGlobal("P#DeFRTOBTalk","GLOBAL",1)
+SetGlobal("P#DeherFRTOB","GLOBAL",1)
+END
+
+IF
+InParty(Myself)
+CombatCounter(0) !See([ENEMY])
+RealGlobalTimerExpired("P#DeFRTOBTalkTime","GLOBAL")
+ReputationGT(Player1,10)
+See(Player1)
+Global("P#DeherFRTOB","GLOBAL",1)
+OR(4)
+Global("P#DeFRTOBTalk","GLOBAL",1)
+Global("P#DeFRTOBTalk","GLOBAL",3)
+Global("P#DeFRTOBTalk","GLOBAL",5)
+Global("P#DeFRTOBTalk","GLOBAL",7)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#DeTalkTime","GLOBAL",1)
+IncrementGlobal("P#DeFRTOBTalk","GLOBAL",1)
+PlaySong(0)
+PlaySound("P#DEH00")
+StartDialogueNoSet(Player1)
+END
+
+IF 
+InParty(Myself)
+RealGlobalTimerExpired("P#DeTalkTime","GLOBAL")
+OR(5)
+Global("P#DeFRTOBTalk","GLOBAL",2)
+Global("P#DeFRTOBTalk","GLOBAL",4)
+Global("P#DeFRTOBTalk","GLOBAL",6)
+Global("P#DeFRTOBTalk","GLOBAL",8)
+Global("P#DeFRTOBTalk","GLOBAL",10)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#DeFRTOBTalkTime","GLOBAL",3000)
+IncrementGlobal("P#DeFRTOBTalk","GLOBAL",1)
+END
+
+IF
+InParty(Myself)
+CombatCounter(0) !See([ENEMY])
+RealGlobalTimerExpired("P#DeFRTOBTalkTime","GLOBAL")
+ReputationGT(Player1,10)
+See(Player1)
+Global("P#DeherFRTOB","GLOBAL",1)
+Time(DAWN_START)
+Global("P#DeFRTOBTalk","GLOBAL",9)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#DeTalkTime","GLOBAL",1)
+IncrementGlobal("P#DeFRTOBTalk","GLOBAL",1)
+PlaySong(0)
+PlaySound("P#DEH00")
+StartDialogueNoSet(Player1)
+END
+

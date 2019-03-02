@@ -1,0 +1,11 @@
+IF
+!Exists("P#KIVAN")
+Global("P#KIVANExists","Global",0)
+!Global("X#TalkedToKivan","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#KIVANExists","Global",1)
+CreateCreature("P#KIVAN",[427.416],3)
+END
+
+

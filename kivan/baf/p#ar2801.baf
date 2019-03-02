@@ -1,0 +1,19 @@
+//Area 2801
+
+IF
+Global("P#DeherianaGoodies","AR2801",0)
+Global("P#DeherianaLives","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#DeherianaGoodies","AR2801",1)
+ActionOverride("Table1",CreateItem("BRAC14",0,0,0))
+ActionOverride("Table1",CreateItem("SLNG10",0,0,0))
+ActionOverride("Drawer1",CreateItem("SCRL6U",0,0,0))
+ActionOverride("Drawer1",CreateItem("SCRL7L",0,0,0))
+ActionOverride("Drawer1",CreateItem("SCRL7S",0,0,0))
+ActionOverride("Drawer1",CreateItem("SCRL8Q",0,0,0))
+ActionOverride("Drawer1",CreateItem("SCRL9G",0,0,0))
+END
+
+
+

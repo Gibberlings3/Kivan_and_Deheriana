@@ -1,0 +1,36 @@
+IF
+InParty(Myself)
+CombatCounter(0) !See([ENEMY])
+RealGlobalTimerExpired("P#KiLOTOBTalkTime","GLOBAL")
+See(Player1)
+OR(6)
+Global("P#KiLOTOBTalk","GLOBAL",3)
+Global("P#KiLOTOBTalk","GLOBAL",5)
+Global("P#KiLOTOBTalk","GLOBAL",7)
+Global("P#KiLOTOBTalk","GLOBAL",9)
+Global("P#KiLOTOBTalk","GLOBAL",11)
+Global("P#KiLOTOBTalk","GLOBAL",13)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("P#KiLoTalkTime","GLOBAL",1)
+IncrementGlobal("P#KiLOTOBTalk","GLOBAL",1)
+PlaySong(0)
+PlaySound("kivan00")
+StartDialogueNoSet(Player1)
+END
+
+IF
+InParty(Myself)
+Global("P#DisableKivanFlirts","GLOBAL",0)
+RealGlobalTimerExpired("P#KIFlirtNightTime","GLOBAL")
+Global("P#KivanRomanceActive","GLOBAL",2)
+!Global("P#KivanRomanceInactive","GLOBAL",1)
+Global("P#KivFlirtNight","GLOBAL",1)
+THEN
+RESPONSE #100
+PlaySong(0)
+PlaySound("kivan00")
+RealSetGlobalTimer("P#KIFlirtNightTime","GLOBAL",1)
+IncrementGlobal("P#KivFlirtNight","GLOBAL",1)
+StartDialogueNoSet(Player1)
+END
