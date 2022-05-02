@@ -178,7 +178,7 @@ END
 
 //The following compiles baf files
 COMPILE ~Kivan/baf/P#KIVAN.baf~
-COMPILE EVALUATE_BUFFER ~Kivan/baf/P#KIV01.baf~ USING ~Kivan/tra/english/setup.tra~
+COMPILE EVALUATE_BUFFER ~Kivan/baf/P#KIV01.baf~ USING ~Kivan/tra/%LANGUAGE%/setup.tra~
 COMPILE EVALUATE_BUFFER ~Kivan/baf/P#KIVD.baf~
 COMPILE ~Kivan/baf/P#KISQ.baf~
 COMPILE ~Kivan/baf/P#DEHER.baf~
