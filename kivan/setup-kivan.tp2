@@ -64,6 +64,7 @@ LANGUAGE
 
 BEGIN @0 DESIGNATED 100
 REQUIRE_PREDICATE GAME_IS ~soa tob bgt bg2ee eet~ @187
+LABEL ~p#_kivan~
 
 /////                                                  \\\\\
 ///// ee-specific stuff                                \\\\\
@@ -590,6 +591,7 @@ END
 BEGIN @165 DESIGNATED 200
 SUBCOMPONENT @164
 REQUIRE_COMPONENT ~kivan/setup-kivan.tp2~ ~100~ @186
+LABEL ~p#_kivan_deheriana_wildmage~
 
 COPY ~Kivan/cre/P#DEHWMA.cre~ ~override/P#DEHER.cre~
   SAY NAME1 @47
@@ -647,6 +649,7 @@ COPY ~Kivan/cre/P#DEHWMA.cre~ ~override/P#DEHER.cre~
 BEGIN @166 DESIGNATED 201
 SUBCOMPONENT @164
 REQUIRE_COMPONENT ~kivan/setup-kivan.tp2~ ~100~ @186
+LABEL ~p#_kivan_deheriana_enchanter~
 
 COPY ~Kivan/cre/P#DEHENC.cre~ ~override/P#DEHER.cre~
   SAY NAME1 @47
@@ -704,6 +707,7 @@ COPY ~Kivan/cre/P#DEHENC.cre~ ~override/P#DEHER.cre~
 BEGIN @167 DESIGNATED 202
 SUBCOMPONENT @164
 REQUIRE_COMPONENT ~kivan/setup-kivan.tp2~ ~100~ @186
+LABEL ~p#_kivan_deheriana_diviner~
 
 COPY ~Kivan/cre/P#DEHDIV.cre~ ~override/P#DEHER.cre~
   SAY NAME1 @47
@@ -764,6 +768,7 @@ COPY ~Kivan/cre/P#DEHDIV.cre~ ~override/P#DEHER.cre~
 
 BEGIN @170 DESIGNATED 300
 REQUIRE_COMPONENT ~kivan/setup-kivan.tp2~ ~100~ @186
+LABEL ~p#_kivan_portrait_alt~
 
 ACTION_IF GAME_IS ~bg2ee eet~ BEGIN
 
