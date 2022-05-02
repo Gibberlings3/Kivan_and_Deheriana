@@ -48,6 +48,12 @@ LANGUAGE
   ~Kivan/tra/english/setup.tra~
   ~Kivan/tra/english/journal.tra~
 
+LANGUAGE
+  ~Russian (by klichko86, paladin84, Jericho2, Staylos and Kirian from arcanecoast.ru)~
+  ~russian~ 
+  ~Kivan/tra/russian/setup.tra~
+  ~Kivan/tra/russian/journal.tra~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
