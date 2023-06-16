@@ -1873,27 +1873,27 @@ IF
 THEN
   RESPONSE #50
     SetGlobal("P#Drow","LOCALS",1)
-    DisplayStringHead(Myself,108004) // Death to the Drow!
+    DisplayStringHead(Myself,@108004) // Death to the Drow!
     RealSetGlobalTimer("P#KivanDrowShoutTime","GLOBAL",60)
     Shout(153)
   RESPONSE #50
     SetGlobal("P#Drow","LOCALS",1)
-    DisplayStringHead(Myself,108005) // In Shevarash name!
+    DisplayStringHead(Myself,@108005) // In Shevarash name!
     RealSetGlobalTimer("P#KivanDrowShoutTime","GLOBAL",60)
     Shout(153)
   RESPONSE #50
     SetGlobal("P#Drow","LOCALS",1)
-    DisplayStringHead(Myself,108006) // Be damned, Lloth's spawn!
+    DisplayStringHead(Myself,@108006) // Be damned, Lloth's spawn!
     RealSetGlobalTimer("P#KivanDrowShoutTime","GLOBAL",60)
     Shout(153)
   RESPONSE #50
     SetGlobal("P#Drow","LOCALS",1)
-    DisplayStringHead(Myself,108007) // For Shevarash!
+    DisplayStringHead(Myself,@108007) // For Shevarash!
     RealSetGlobalTimer("P#KivanDrowShoutTime","GLOBAL",60)
     Shout(153)
   RESPONSE #50
     SetGlobal("P#Drow","LOCALS",1)
-    DisplayStringHead(Myself,108008) // Doomed be the dark ones!
+    DisplayStringHead(Myself,@108008) // Doomed be the dark ones!
     RealSetGlobalTimer("P#KivanDrowShoutTime","GLOBAL",60)
     Shout(153)
   RESPONSE #50

@@ -30,8 +30,8 @@ SAY @5
 IF ~~ THEN DO ~SetGlobal("P#NEIRMakesBow","LOCALS",2)
 TakePartyItem("P#KISTR")
 DestroyItem("P#KISTR")
-TakePartyItem("P#BOW")
-DestroyItem("P#BOW") 
+TakePartyItem("P#BOW00")
+DestroyItem("P#BOW00") 
 GiveItemCreate("P#BOW01",Player1,0,0,0) EscapeArea()~ EXIT
 END
 
@@ -41,8 +41,8 @@ SAY @6
 IF ~~ THEN DO ~SetGlobal("P#NEIRMakesBow","LOCALS",2)
 TakePartyItem("P#KISTR")
 DestroyItem("P#KISTR") 
-TakePartyItem("P#BOW")
-DestroyItem("P#BOW")
+TakePartyItem("P#BOW00")
+DestroyItem("P#BOW00")
 GiveItemCreate("P#BOW01",Player1,0,0,0)~ EXIT
 END
 
@@ -191,8 +191,8 @@ IF ~NumTimesTalkedToGT(0)
 InParty("P#kivan") !Dead("P#kivan")
 !StateCheck("P#kivan",STATE_SLEEPING)~ NeirosGreets1.1.1G
 SAY @43
-IF ~OR(2) !PartyHasItem("P#BOW") !PartyHasItem("P#KISTR")~ THEN EXIT
-IF ~PartyHasItem("P#BOW")  PartyHasItem("P#KISTR")~ THEN GOTO NeirosMakesBow
+IF ~OR(2) !PartyHasItem("P#BOW00") !PartyHasItem("P#KISTR")~ THEN EXIT
+IF ~PartyHasItem("P#BOW00")  PartyHasItem("P#KISTR")~ THEN GOTO NeirosMakesBow
 END
 
 IF ~~ NeirosGreets1.3
@@ -259,32 +259,32 @@ END
 
 IF ~~ NeirosGreets1.1.1E
 SAY @27
-IF ~OR(2) !PartyHasItem("P#BOW")  !PartyHasItem("P#KISTR")~ THEN EXIT
-IF ~PartyHasItem("P#BOW")  PartyHasItem("P#KISTR")~ THEN GOTO NeirosMakesBow
+IF ~OR(2) !PartyHasItem("P#BOW00")  !PartyHasItem("P#KISTR")~ THEN EXIT
+IF ~PartyHasItem("P#BOW00")  PartyHasItem("P#KISTR")~ THEN GOTO NeirosMakesBow
 END
 
 IF ~~ NeirosGreets1.1.1D
 SAY @51
-IF ~OR(2) !PartyHasItem("P#BOW")  !PartyHasItem("P#KISTR")~ THEN EXIT
-IF ~PartyHasItem("P#BOW")  PartyHasItem("P#KISTR")~ THEN GOTO NeirosMakesBow
+IF ~OR(2) !PartyHasItem("P#BOW00")  !PartyHasItem("P#KISTR")~ THEN EXIT
+IF ~PartyHasItem("P#BOW00")  PartyHasItem("P#KISTR")~ THEN GOTO NeirosMakesBow
 END
 
 IF ~~ NeirosGreets1.1.1C
 SAY @29
-IF ~OR(2) !PartyHasItem("P#BOW")  !PartyHasItem("P#KISTR")~ THEN EXIT
-IF ~PartyHasItem("P#BOW")  PartyHasItem("P#KISTR")~ THEN GOTO NeirosMakesBow
+IF ~OR(2) !PartyHasItem("P#BOW00")  !PartyHasItem("P#KISTR")~ THEN EXIT
+IF ~PartyHasItem("P#BOW00")  PartyHasItem("P#KISTR")~ THEN GOTO NeirosMakesBow
 END
 
 IF ~~ NeirosGreets1.1.1M
 SAY @52
-IF ~OR(2) !PartyHasItem("P#BOW")  !PartyHasItem("P#KISTR")~ THEN EXIT
-IF ~PartyHasItem("P#BOW")  PartyHasItem("P#KISTR")~ THEN GOTO NeirosMakesBow
+IF ~OR(2) !PartyHasItem("P#BOW00")  !PartyHasItem("P#KISTR")~ THEN EXIT
+IF ~PartyHasItem("P#BOW00")  PartyHasItem("P#KISTR")~ THEN GOTO NeirosMakesBow
 END
 
 IF ~~ NeirosGreets1.1.1A
 SAY @30
-IF ~OR(2) !PartyHasItem("P#BOW")  !PartyHasItem("P#KISTR")~ THEN EXIT
-IF ~PartyHasItem("P#BOW")  PartyHasItem("P#KISTR")~ THEN GOTO NeirosMakesBow
+IF ~OR(2) !PartyHasItem("P#BOW00")  !PartyHasItem("P#KISTR")~ THEN EXIT
+IF ~PartyHasItem("P#BOW00")  PartyHasItem("P#KISTR")~ THEN GOTO NeirosMakesBow
 END
 
 IF ~~ NeirosGreets1.1.1B

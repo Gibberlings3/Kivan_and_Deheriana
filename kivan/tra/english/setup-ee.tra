@@ -1,27 +1,96 @@
+@98   = ~This long bow was given to Kivan by his wife Deheriana as a wedding gift.
+
+STATISTICS:
+
+Equipped Abilities:
+– Armor Class: +1
+
+THAC0: +2
+Speed Factor: 1
+Proficiency Type: Longbow
+Type: Two-handed
+Requires:
+ 6 Strength
+
+Weight: 2
+~
+@99   = ~This long bow was given to Kivan by his wife Deheriana as a wedding gift. Neiros Gellantara wove a string from the dryad's hair, making the bow deadlier.
+
+STATISTICS:
+
+Equipped Abilities:
+– Armor Class: +1
+– Magic Resistance: 10%
+
+THAC0: +3
+Speed Factor: 1
+Proficiency Type: Longbow
+Type: Two-handed
+Requires:
+ 6 Strength
+
+Weight: 2
+~
+@101  = ~A cape is a sleeveless outer garment or part of a garment that fits closely at the neck and hangs loosely over the shoulders. This hooded cape is made out of enchanted, color-shifting material that allows the wearer to blend with his environs. Apart from adding combat protections, the cape is prone to unnerve the onlookers.
+
+STATISTICS:
+
+Equipped Abilities:
+– Armor Class: +2 vs. missile weapons
+– Saving Throws (death, breath, wand): +2
+– Protects against critical hits
+
+Weight:  3
+~
+
 @159  = ~One of man's earliest weapons, dating back to the most primitive of times, the first spears were simply wooden poles or sticks sharpened at one end.  When man mastered metals, spearheads were made from iron and steel.  Having reached this end, weaponers began experimenting with different types of spear heads, thus leading to the development of certain polearm types.
 
 STATISTICS:
 
-Damage:  1D6
-Damage type:  piercing
-Weight: 5
+Damage: 1d6+2 (piercing)
 Speed Factor: 6
 Proficiency Type: Spear
-Type:  2-handed~
+Type: Two-handed
+Requires:
+ 5 Strength
+
+Weight: 5
+~
 @160  = ~This is a plain looking short spear with a leaf-shaped point. It was balanced for a slender elven hand. Mage Thalantyr enchanted the weapon for Kivan of Shilmista.
 
 STATISTICS:
 
 Combat Abilities:
-10% chance with every hit that opponent is entangled for 24 seconds, no save
-THAC0: +2 bonus
-Damage:  1D6 +2
-Damage type:  piercing
-Weight: 3
+– 10% chance with every hit that opponent is entangled for 24 seconds, no save
+
+THAC0: +3
+Damage: 1d6+2 (piercing)
 Speed Factor: 4
-Proficiency Type: Spear 
-Type:  2-handed
-Requires: 5 Strength~
+Proficiency Type: Spear
+Type: Two-handed
+Requires:
+ 5 Strength
+
+Weight: 3
+~
+
+@181  = ~The magical bowstring of Gond makes even the legendary elven longbow more accurate and powerful.
+
+STATISTICS:
+
+Equipped Abilities:
+– Armor Class: +1
+– Magic Resistance: 10%
+
+THAC0: +5
+Speed Factor: 1
+Proficiency Type: Longbow
+Type: Two-handed
+Requires:
+ 6 Strength
+
+Weight: 1
+~
 
 @184  = ~The flight arrow, as its name implies, is built for distance.  These are lightweight arrows and are often used for hunting.  Most of these arrows are made of ash or birch and are 30 to 40 inches long.
 

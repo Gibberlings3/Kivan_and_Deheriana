@@ -108,7 +108,7 @@ Equipped Abilities:
 
 Armour class bonus: 1
 
-THAC0: +1
+THAC0: +2
 Weight: 2
 Speed Factor: 1
 Proficiency Type: Longbow
@@ -311,3 +311,12 @@ Not usable by:
  Mage~
 @186 = ~Requires the main component to be installed.~
 @187 = ~This mod is not compatible with your game.~
+
+/* new for v18 */
+/* lines in p#kiv01.baf */
+@108004 = ~Death to the Drow!~
+@108005 = ~In Shevarash name!~
+@108006 = ~Be damned, Lloth's spawn!~
+@108007 = ~For Shevarash!~
+@108008 = ~Doomed be the dark ones!~
+@108009 = ~Vengeance for our fallen!~

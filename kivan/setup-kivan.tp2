@@ -1,8 +1,8 @@
 BACKUP ~weidu_external/kivan/backup~
 //AUTHOR ~domi_sotto@gibberlings3.net~
-SUPPORT ~http://gibberlings3.net/forums/index.php?showforum=58~ 
+SUPPORT ~https://www.gibberlings3.net/forums/forum/58-kivan-and-deheriana-companions-for-bg2/~ 
 
-VERSION ~v17~
+VERSION ~v18~
 
 README ~Kivan/readme-kivan-new.html~
 
@@ -259,7 +259,7 @@ COPY ~Kivan/itm/P#TAHE.ITM~ ~override~
   SAY UNIDENTIFIED_DESC @96
   SAY DESC @96
 
-COPY ~kivan/itm/P#BOW.ITM~ ~override~
+COPY ~kivan/itm/P#BOW.ITM~ ~override/P#BOW00.ITM~
   SAY NAME1 @97
   SAY NAME2 @97
   SAY DESC @98
@@ -313,7 +313,7 @@ COPY_EXISTING ~sahkng01.cre~ ~override~
 COPY_EXISTING ~sahkng02.cre~ ~override~
   ADD_CRE_ITEM ~P#IHTIA~ #0 #0 #0 ~IDENTIFIED~ ~INV6~
 
-ACTION_IF GAME_IS ~tob bgt bg2ee~ THEN BEGIN
+ACTION_IF GAME_IS ~tob bgt bg2ee eet~ THEN BEGIN
 
   COPY ~Kivan/bam/IWREAT.BAM~ ~override~
        ~Kivan/bam/CWREAT.BAM~ ~override~
@@ -330,6 +330,20 @@ ACTION_IF GAME_IS ~tob bgt bg2ee~ THEN BEGIN
     SAY UNIDENTIFIED_DESC @180  
     SAY DESC @181
 
+END
+
+/* BGEE: Add Kivan's items to item_use.2da */
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+  APPEND ~item_use.2da~ ~P#BOW00 P#KIVAN 9382 2 9491~
+    UNLESS ~P#BOW00~
+  APPEND ~item_use.2da~ ~P#BOW01 P#KIVAN 9382 2 9491~
+    UNLESS ~P#BOW01~
+  APPEND ~item_use.2da~ ~P#BOW02 P#KIVAN 9382 2 9491~
+    UNLESS ~P#BOW02~
+  APPEND ~item_use.2da~ ~P#HOOD P#KIVAN 9382 2 9491~
+    UNLESS ~P#BOW02~
+  COPY_EXISTING ~item_use.2da~ ~override~
+  PRETTY_PRINT_2DA
 END
 
 /////                                                  \\\\\
@@ -413,8 +427,8 @@ COPY ~Kivan/CRE/P#NEIROS.cre~ ~override~
 COPY ~Kivan/cre/P#SQUI.cre~ ~override~
 
 COPY ~Kivan/cre/P#KIVAN.cre~ ~override~
-  SAY NAME1 @1
-  SAY NAME2 @1
+  SAY NAME1 #9491 //@1
+  SAY NAME2 #9491 //@1
 //   SAY INITIAL_MEETING @2
   SAY MORALE @3
   SAY HAPPY @4
@@ -514,7 +528,7 @@ COPY ~Kivan/cre/P#LILCO.cre~ ~override~
   SAY NAME1 @161
   SAY NAME2 @161
 
-ACTION_IF GAME_IS ~tob bgt bg2ee~ THEN BEGIN
+ACTION_IF GAME_IS ~tob bgt bg2ee eet~ THEN BEGIN
 
   COPY ~Kivan/cre/P#DEH01.cre~ ~override~
     SAY NAME1 @47
