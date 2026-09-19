@@ -481,56 +481,56 @@ END
 //Watcher's Keep
 
 I_C_T2 GORDEMO 1 P#DehWKIO
-== P#DE25J IF ~InParty("P#DEHER") InMyArea("P#DEHER") ~ THEN @60
+== P#DE25J IF ~InParty("P#DEHER") InMyArea("P#DEHER") GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)~ THEN @60
 END
 
 I_C_T2 GORDEMO 1 P#KivWKIO
-== P#KI25J IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @61
+== P#KI25J IF ~InParty("P#kivan") InMyArea("P#KIVAN") GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)~ THEN @61
 END
 
 I_C_T2 GORDEMO 18 P#KivWKIO1
-== P#KI25J IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @62
+== P#KI25J IF ~InParty("P#kivan") InMyArea("P#KIVAN") GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)~ THEN @62
 END
 
 I_C_T2 GORDEMO 24 P#KivWKIO2
-== P#KI25J IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @63
+== P#KI25J IF ~InParty("P#kivan") InMyArea("P#KIVAN") GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)~ THEN @63
 END
 
 I_C_T2 GORCHR 11 P#DehWKChrDemon
-== P#DE25J IF ~InParty("P#DEHER") InMyArea("P#DEHER") ~ THEN @64
+== P#DE25J IF ~InParty("P#DEHER") InMyArea("P#DEHER") GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)~ THEN @64
 END
 
 I_C_T2 GORCHR 6 P#KivWKCHR
-== P#KI25J IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @65
+== P#KI25J IF ~InParty("P#kivan") InMyArea("P#KIVAN") GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)~ THEN @65
 END
 
 I_C_T2 GORCAR 15 P#KivWKCarston
-== P#KI25J IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @66
+== P#KI25J IF ~InParty("P#kivan") InMyArea("P#KIVAN") GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)~ THEN @66
 END
 
 I_C_T2 GORCAR 15 P#DehWKCarston
-== P#DE25J IF ~InParty("P#DEHER") InMyArea("P#DEHER") ~ THEN @67
+== P#DE25J IF ~InParty("P#DEHER") InMyArea("P#DEHER") GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)~ THEN @67
 END
 
 I_C_T2 GORCAMB 20 P#DehWKDeck
-== P#DE25J IF ~InParty("P#DEHER") InMyArea("P#DEHER") ~ THEN @68
+== P#DE25J IF ~InParty("P#DEHER") InMyArea("P#DEHER") GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)~ THEN @68
 END
 
 I_C_T2 GORAPR 10 P#KivWKApprentice
-== P#KI25J IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @69
+== P#KI25J IF ~InParty("P#kivan") InMyArea("P#KIVAN") GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)~ THEN @69
 END
 
 I_C_T2 GORAPP1 10 P#KivWKFinal
-== P#KI25J IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @70
+== P#KI25J IF ~InParty("P#kivan") InMyArea("P#KIVAN") GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)~ THEN @70
 END
 
 I_C_T2 GORAPP1 10 P#DehWKFinal
-== P#DE25J IF ~InParty("P#DEHER") InMyArea("P#DEHER") ~ THEN @71
+== P#DE25J IF ~InParty("P#DEHER") InMyArea("P#DEHER") GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)~ THEN @71
 END
 
 INTERJECT GORSUC01 8 P#KivWKSuccubus
 == P#KI25J IF ~InParty("P#kivan") InMyArea("P#KIVAN")
-!Global("P#KivanRomanceInactive","GLOBAL",1) Global("P#KivanRomanceActive","GLOBAL",2)
+!Global("P#KivanRomanceInactive","GLOBAL",1) Global("P#KivanRomanceActive","GLOBAL",2) GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)
 ~ THEN @72
 END
 ++ @73 EXTERN P#KI25J KiSucc1
@@ -564,23 +564,23 @@ END
 END
 
 I_C_T2 GORMAD1 39 P#KivWKYakman
-== P#KI25J IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @81
+== P#KI25J IF ~InParty("P#kivan") InMyArea("P#KIVAN") GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)~ THEN @81
 END
 
 I_C_T2 GORMAD1 40 P#KivWKYakman
-== P#KI25J IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @81
+== P#KI25J IF ~InParty("P#kivan") InMyArea("P#KIVAN") GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)~ THEN @81
 END
 
 I_C_T2 GORPOL1 17 P#DehWKPol
-== P#DE25J IF ~InParty("P#DEHER") InMyArea("P#DEHER") ~ THEN @82
+== P#DE25J IF ~InParty("P#DEHER") InMyArea("P#DEHER") GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)~ THEN @82
 END
 
 I_C_T2 GORMAD1 2 P#DehWKYakman
-== P#DE25J IF ~InParty("P#DEHER") InMyArea("P#DEHER") ~ THEN @83
+== P#DE25J IF ~InParty("P#DEHER") InMyArea("P#DEHER") GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)~ THEN @83
 END
 
 I_C_T2 GORIMP01 4 P#DehWKImp
-== P#DE25J IF ~InParty("P#DEHER") InMyArea("P#DEHER") ~ THEN @84
+== P#DE25J IF ~InParty("P#DEHER") InMyArea("P#DEHER") GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)~ THEN @84
 END
 
 //Abzigail
@@ -844,56 +844,56 @@ IF ~~ THEN DO ~SetGlobal("P#KivanInterruptNyalee","GLOBAL",1) LeaveParty() Enemy
 //Watcher's Keep  in SoA
 
 I_C_T2 GORDEMO 1 P#DehWKIO
-== P#DEHJ IF ~InParty("P#DEHER") InMyArea("P#DEHER") ~ THEN @60
+== P#DEHJ IF ~InParty("P#DEHER") InMyArea("P#DEHER") GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)~ THEN @60
 END
 
 I_C_T2 GORDEMO 1 P#KivWKIO
-== P#KIVJ IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @61
+== P#KIVJ IF ~InParty("P#kivan") InMyArea("P#KIVAN") GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)~ THEN @61
 END
 
 I_C_T2 GORDEMO 18 P#KivWKIO1
-== P#KIVJ IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @62
+== P#KIVJ IF ~InParty("P#kivan") InMyArea("P#KIVAN") GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)~ THEN @62
 END
 
 I_C_T2 GORDEMO 24 P#KivWKIO2
-== P#KIVJ IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @63
+== P#KIVJ IF ~InParty("P#kivan") InMyArea("P#KIVAN") GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)~ THEN @63
 END
 
 I_C_T2 GORCHR 11 P#DehWKChrDemon
-== P#DEHJ IF ~InParty("P#DEHER") InMyArea("P#DEHER") ~ THEN @64
+== P#DEHJ IF ~InParty("P#DEHER") InMyArea("P#DEHER") GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)~ THEN @64
 END
 
 I_C_T2 GORCHR 6 P#KivWKCHR
-== P#KIVJ IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @65
+== P#KIVJ IF ~InParty("P#kivan") InMyArea("P#KIVAN") GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)~ THEN @65
 END
 
 I_C_T2 GORCAR 15 P#KivWKCarston
-== P#KIVJ IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @66
+== P#KIVJ IF ~InParty("P#kivan") InMyArea("P#KIVAN") GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)~ THEN @66
 END
 
 I_C_T2 GORCAR 15 P#DehWKCarston
-== P#DEHJ IF ~InParty("P#DEHER") InMyArea("P#DEHER") ~ THEN @67
+== P#DEHJ IF ~InParty("P#DEHER") InMyArea("P#DEHER") GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)~ THEN @67
 END
 
 I_C_T2 GORCAMB 20 P#DehWKDeck
-== P#DEHJ IF ~InParty("P#DEHER") InMyArea("P#DEHER") ~ THEN @68
+== P#DEHJ IF ~InParty("P#DEHER") InMyArea("P#DEHER") GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)~ THEN @68
 END
 
 I_C_T2 GORAPR 10 P#KivWKApprentice
-== P#KIVJ IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @69
+== P#KIVJ IF ~InParty("P#kivan") InMyArea("P#KIVAN") GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)~ THEN @69
 END
 
 I_C_T2 GORAPP1 10 P#KivWKFinal
-== P#KIVJ IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @70
+== P#KIVJ IF ~InParty("P#kivan") InMyArea("P#KIVAN") GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)~ THEN @70
 END
 
 I_C_T2 GORAPP1 10 P#DehWKFinal
-== P#DEHJ IF ~InParty("P#DEHER") InMyArea("P#DEHER") ~ THEN @71
+== P#DEHJ IF ~InParty("P#DEHER") InMyArea("P#DEHER") GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)~ THEN @71
 END
 
 INTERJECT GORSUC01 8 P#KivWKSuccubus
 == P#KIVJ IF ~InParty("P#kivan") InMyArea("P#KIVAN")
-!Global("P#KivanRomanceInactive","GLOBAL",1) Global("P#KivanRomanceActive","GLOBAL",2)
+!Global("P#KivanRomanceInactive","GLOBAL",1) Global("P#KivanRomanceActive","GLOBAL",2) GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)
 ~ THEN @72
 END
 ++ @73 EXTERN P#KIVJ KiSucc1
@@ -927,23 +927,23 @@ END
 END
 
 I_C_T2 GORMAD1 39 P#KivWKYakman
-== P#KIVJ IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @81
+== P#KIVJ IF ~InParty("P#kivan") InMyArea("P#KIVAN") GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)~ THEN @81
 END
 
 I_C_T2 GORMAD1 40 P#KivWKYakman
-== P#KIVJ IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @81
+== P#KIVJ IF ~InParty("P#kivan") InMyArea("P#KIVAN") GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)~ THEN @81
 END
 
 I_C_T2 GORPOL1 17 P#DehWKPol
-== P#DEHJ IF ~InParty("P#DEHER") InMyArea("P#DEHER") ~ THEN @82
+== P#DEHJ IF ~InParty("P#DEHER") InMyArea("P#DEHER") GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)~ THEN @82
 END
 
 I_C_T2 GORMAD1 2 P#DehWKYakman
-== P#DEHJ IF ~InParty("P#DEHER") InMyArea("P#DEHER") ~ THEN @83
+== P#DEHJ IF ~InParty("P#DEHER") InMyArea("P#DEHER") GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)~ THEN @83
 END
 
 I_C_T2 GORIMP01 4 P#DehWKImp
-== P#DEHJ IF ~InParty("P#DEHER") InMyArea("P#DEHER") ~ THEN @84
+== P#DEHJ IF ~InParty("P#DEHER") InMyArea("P#DEHER") GlobalLT("Chapter","GLOBAL",%bg2_chapter_8%)~ THEN @84
 END
 
 //Volo in Saradush  //from 156//
