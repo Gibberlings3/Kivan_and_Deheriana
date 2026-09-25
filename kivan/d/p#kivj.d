@@ -1543,9 +1543,9 @@ I_C_T2 TRAINER1 4 X#KivanFearghus
 == TRAINER1 IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @337
 END
 
-I_C_T2 GENIE1 7 P#KivanCircusGenie1
+I_C_T2 KGENIE1 7 P#KivanCircusGenie1
 == P#KIVJ IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @338
-== GENIE1 IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @339
+== KGENIE1 IF ~InParty("P#kivan") InMyArea("P#KIVAN")~ THEN @339
 END
 
 I_C_T2 AERIE 29 P#KivanAerie1
